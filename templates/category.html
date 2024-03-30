@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'category',title = ${'分类' + ': ' + category.spec.displayName + ' | ' + site.title}, head = ~{::head})}">
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'category',title = ${'分類' + ': ' + category.spec.displayName + ' | ' + site.title}, head = ~{::head})}">
 <th:block th:fragment="head">
-    <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = '分类',
+    <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = '分類',
                 _permalink = ${category.status.permalink},
                 _cover = ${category.spec.cover},
                 _excerpt = ${category.spec.description},
@@ -12,14 +12,14 @@
 
     <div class="page" id="body-wrap">
         <header class="not-top-img" id="page-header">
-            <nav th:replace="~{modules/nav :: nav(title = ${'分类' + ': ' + category.spec.displayName})}"></nav>
+            <nav th:replace="~{modules/nav :: nav(title = ${'分類' + ': ' + category.spec.displayName})}"></nav>
         </header>
         <main class="layout" id="content-inner">
             <div id="category">
                 <div id="category-bar">
                     <div class="category-bar-items" id="category-bar-items">
                         <div class="category-bar-item" id="category-bar-home">
-                            <a href="/">首页</a>
+                            <a href="/">首頁</a>
                         </div>
                         <div class="category-bar-item"
                              th:classappend="${category.metadata.name == categoryItem.metadata.name} ? ' select'"
@@ -29,7 +29,7 @@
                                th:text="${categoryItem.spec.displayName}"></a>
                         </div>
                     </div>
-                    <!-- 跳转到分类页 -->
+                    <!-- 跳轉到分類頁 -->
                     <a class="category-bar-more" href="/categories">更多</a>
                 </div>
                 <!-- 文章 -->

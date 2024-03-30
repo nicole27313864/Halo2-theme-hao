@@ -30,7 +30,7 @@
                                 </div>`
                     }
                 } else {
-                    result += '没有评论'
+                    result += '沒有評論'
                 }
 
                 let $dom = document.querySelector('#card-newest-comments .aside-list')
@@ -59,7 +59,7 @@
                         document.querySelector('#newcomm') && necommHtml(walineArray)
                     }).catch(e => {
                         const $dom = document.querySelector('#card-newest-comments .aside-list')
-                        $dom.innerHTML = "无法获取评论，请确认相关配置是否正确"
+                        $dom.innerHTML = "無法獲取評論，請確認相關配置是否正確"
                     })
                 }
 
@@ -109,7 +109,7 @@
                   `
                     }
                 } else {
-                    result += '没有评论'
+                    result += '沒有評論'
                 }
 
                 let $dom = document.querySelector('#newcomm')

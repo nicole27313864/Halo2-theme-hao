@@ -1,20 +1,20 @@
-<!-- tag & stat 粘性布局 -->
+<!-- tag & stat 黏性布局 -->
 <div class="card-widget card-tags card-archives card-webinfo card-allinfo">
 
 
-        <span th:if="${theme.config.sidebar.tags_switch}">
-            <th:block th:replace="~{modules/widgets/aside/contain/tags-contain}" th:if="${theme.config.sidebar.tags_switch}"/>
+    <span th:if="${theme.config.sidebar.tags_switch}">
+        <th:block th:replace="~{modules/widgets/aside/contain/tags-contain}" th:if="${theme.config.sidebar.tags_switch}"/>
 
-            <hr>
-        </span>
+        <hr>
+    </span>
 
-    <span th:if="${theme.config.sidebar.archive_switch}">
-            <th:block th:replace="~{modules/widgets/aside/contain/archive-contain}" />
+<span th:if="${theme.config.sidebar.archive_switch}">
+        <th:block th:replace="~{modules/widgets/aside/contain/archive-contain}" />
 
-            <hr>
-        </span>
+        <hr>
+    </span>
 
 
-    <th:block th:replace="~{modules/widgets/aside/contain/stat-contain}" />
+<th:block th:replace="~{modules/widgets/aside/contain/stat-contain}" />
 
 </div>

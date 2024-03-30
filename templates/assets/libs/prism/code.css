@@ -1,4 +1,4 @@
-/*代码块*/
+/*代碼塊*/
 [data-theme=light] {
     --rl-code-bar-shadow: 0 5px 10px 0 rgba(144, 164, 174, 0.4);
 }
@@ -180,7 +180,7 @@
     display: none;
 }
 
-/* 代码展开图标 */
+/* 代碼展開圖示 */
 #article-container .code-expand-btn ,
 #post-comment .code-expand-btn{
     transition: 0.3s;
@@ -327,4 +327,4 @@
     }
 }
 
-/*代码块*/
+/*代碼塊*/

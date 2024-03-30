@@ -1,7 +1,7 @@
 @charset "utf-8";
 /*
 Last Modified time : 20220211 98:00 by https://immmmm.com
-已适配 FriendCircle 公共库和主库
+已適配 FriendCircle 公共庫和主庫
 */
 :root {
     --lmm-fontcolor: #363636;
@@ -24,7 +24,7 @@ Last Modified time : 20220211 98:00 by https://immmmm.com
     --lmm-floorcolor: #454545;
 }
 
-/* 基本信息 */
+/* 基本資訊 */
 #cf-state {
     font-size: 16px;
     border-radius: 8px;
@@ -69,7 +69,7 @@ Last Modified time : 20220211 98:00 by https://immmmm.com
     font-size: 20px;
 }
 
-/* 排序按钮 */
+/* 排序按鈕 */
 #cf-change {
     font-size: 14px;
     display: block;
@@ -78,7 +78,7 @@ Last Modified time : 20220211 98:00 by https://immmmm.com
     text-align: center;
 }
 
-/* 更多按钮 */
+/* 更多按鈕 */
 #cf-more {
     width: 40%;
     max-width: 810px;
@@ -253,7 +253,7 @@ img.cf-img-avatar {
     color: var(--heo-secondtext);
 }
 
-/* 个人文章列表层 */
+/* 個人文章列表層 */
 #cf-overlay, #cf-overshow {
     position: fixed;
     width: 100%;
@@ -387,7 +387,7 @@ img.cf-img-avatar {
     height: 100%;
 }
 
-/* 颜色 */
+/* 顏色 */
 #cf-state, #cf-more {
     background: var(--heo-card-bg);
     color: var(--heo-fontcolor);
@@ -456,7 +456,7 @@ img.cf-img-avatar {
     opacity: 0.4;
 }
 
-/* 暗色主题 */
+/* 暗色主題 */
 .dark-theme #cf-overlay, .theme-dark #cf-overlay {
     background-color: rgba(59, 61, 66, 0.42);
 }
@@ -494,7 +494,7 @@ img.cf-img-avatar {
     color: var(--lmm-dark-fontcolor);
 }
 
-/* 移动端适配 */
+/* 行動端適配 */
 @media screen and (max-width: 400px) {
     #cf-state {
         font-size: 14px;

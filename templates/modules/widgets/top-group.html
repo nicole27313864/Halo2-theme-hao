@@ -1,4 +1,4 @@
-<!-- 推荐文章 -->
+<!-- 推薦文章 -->
 <div class="topGroup"  th:with='topGroupPosts = ${postFinder.list(1,6)},
     postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"&" : theme.config.layout.postRandomImg+"?"}'
 >
@@ -9,7 +9,7 @@
         <div class="post_cover">
             <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
                 <span class="recent-post-top-text"
-                      th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'">荐</span>
+                      th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'">薦</span>
                 <img class="post_bg"
                      th:with=' img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}'
                      th:alt="${post.spec.title}"
@@ -28,7 +28,7 @@
             </a>
         </div>
     </div>
-    <!-- 自定义的文章右上角的推荐文章 -->
+    <!-- 自訂的文章右上角的推薦文章 -->
     <div class="recent-post-item"
          th:each="cuscomPost : ${theme.config.top.BannerRight.recommendPostCustom}"
          th:if="${#strings.equals(theme.config.top.BannerRight.recommendPost, 'custom') && not #strings.isEmpty(cuscomPost.post) }">
@@ -36,7 +36,7 @@
             <div class="post_cover">
                 <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
                     <span class="recent-post-top-text"
-                          th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'">荐</span>
+                          th:attr="onclick='pjax.loadUrl(\''+ @{${post.status.permalink}} +'\')'">薦</span>
                     <img class="post_bg"
                          th:with='img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}'
                          th:alt="${post.spec.title}"
@@ -57,7 +57,7 @@
         </th:block>
     </div>
 
-    <!-- 今日推荐 -->
+    <!-- 今日推薦 -->
     <div class="todayCard" id="todayCard"
          th:if="${theme.config.top.BannerRight.todayRecommend}"
          th:attr="onclick='javascript:window.open(\''+ ${theme.config.top.BannerRight.todayRecommendContent.todayRecommendUrl} +'\')'">
@@ -71,7 +71,7 @@
         <div class="banner-button-group">
             <a class="banner-button" onclick="window.event.cancelBubble=!0;heo.hideTodayCard()">
                 <i class="haofont hao-icon-circle-plus"></i>
-                <span class="banner-button-text">更多推荐</span>
+                <span class="banner-button-text">更多推薦</span>
             </a>
         </div>
     </div>

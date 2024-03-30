@@ -1,5 +1,5 @@
 <script th:if="${theme.config.footer.footerContent.style_one.runtime_enable}" async="async">(function () {
-    var grt = new Date("[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[1]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[2]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] 00:00:00"); //设置网站上线时间
+    var grt = new Date("[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[1]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[2]}]]/[[${#strings.arraySplit(theme.config.basics.siteStartTime, '-')[0]}]] 00:00:00"); //設置網站上線時間
     var now = new Date();
     var dnum;
     var hnum;
@@ -9,7 +9,7 @@
     var t;
     var n;
 
-    // 计算并更新天数、小时数、分钟数和秒数
+    // 計算並更新天數、小時數、分鐘數和秒數
     function updateTime() {
         now = new Date(); // 更新 now 的值
         nowHour = now.getHours(); // 更新 nowHour 的值
@@ -34,7 +34,7 @@
         n = (t / 1496e5).toFixed(6)
     }
 
-    // 更新网页中显示的网站运行时间
+    // 更新網頁中顯示的網站運行時間
     function updateHtml() {
         const footer = document.getElementById("footer");
         if (!footer) return
@@ -42,17 +42,17 @@
         let img = "";
         let description = "";
         if (nowHour < 18 && nowHour >= 9) {
-            // 如果是上班时间
+            // 如果是上班時間
             img = "[(${theme.config.footer.footerContent.style_one.work_img})]";
             description = "[(${theme.config.footer.footerContent.style_one.work_description})]";
         } else {
-            // 如果是下班时间
+            // 如果是下班時間
             img = "[(${theme.config.footer.footerContent.style_one.offduty_img})]";
             description = "[(${theme.config.footer.footerContent.style_one.offduty_description})]";
         }
         if (document.getElementById("workboard")) {
             currentTimeHtml =  `<img class="workSituationImg boardsign" src="${img}" alt="${description}" title="${description}">
-                <div id="runtimeTextTip"> 本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='haofont hao-icon-heartbeat' style='color:red'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${n} 个天文单位 🚀 </div>`
+                <div id="runtimeTextTip"> 本站居然運行了 ${dnum} 天<span id='runtime'> ${hnum} 小時 ${mnum} 分 ${snum} 秒 </span><i class='haofont hao-icon-heartbeat' style='color:red'></i> <br> 旅行者 1 號當前距離地球 ${t} 公里，約為 ${n} 個天文單位 🚀 </div>`
             document.getElementById("workboard").innerHTML = currentTimeHtml;
         }
     }

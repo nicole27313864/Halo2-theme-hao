@@ -2,7 +2,7 @@ var btf = {
 
 
 
-    // 修改时间显示"最近"
+    // 修改時間顯示"最近"
     diffDateExact: function (d, more = false) {
         const dateNow = new Date();
         const datePost = new Date(d);
@@ -332,13 +332,13 @@ var btf = {
 
         return actualTop
     },
-    //过滤标签
+    //過濾標籤
     changeContent: (content,length = null)=>{
         if (content === '') return content
 
-        content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
-        content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
-        content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+        content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[圖片]') // replace image link
+        content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[連結]') // replace url
+        content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代碼]') // replace code
         content = content.replace(/<[^>]+>/g, "") // remove html tag
 
         if (length!=null){

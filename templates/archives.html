@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'archive',title = ${'文章归档' + ' | ' + site.title}, head = ~{::head})}">
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'archive',title = ${'文章歸檔' + ' | ' + site.title}, head = ~{::head})}">
 <th:block th:fragment="head">
-    <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = '文章归档',
+    <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = '文章歸檔',
                 _permalink = '/archives',
                 _cover = ${theme.config.other.opengraph.image},
                 _excerpt = ${site.seo.description},
@@ -12,7 +12,7 @@
 
     <div class="page" id="body-wrap">
         <header class="not-top-img" id="page-header">
-            <nav th:replace="~{modules/nav :: nav(title = '文章归档')}"></nav>
+            <nav th:replace="~{modules/nav :: nav(title = '文章歸檔')}"></nav>
         </header>
         <main class="layout" id="content-inner">
             <!-- archive -->
@@ -22,7 +22,7 @@
                      th:with='postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,"?") ? theme.config.layout.postRandomImg+"&" : theme.config.layout.postRandomImg+"?"}'>
                     <div class="article-sort-item year" th:text="${archive.year}"></div>
                     <div class="article-sort" th:each="month : ${archive.months}">
-                        <!-- 月份没有样式所以不显示 -->
+                        <!-- 月份沒有樣式所以不顯示 -->
                         <!-- <div class="article-sort-item" th:text="${month.month}"></div> -->
                         <div class="article-sort-item" th:each="post : ${month.posts}">
                             <a class="article-sort-item-img" th:href="@{${post.status.permalink}}"
@@ -35,7 +35,7 @@
                                     <time class="post-meta-date-created"
                                           th:attr="datetime=${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}"
                                           th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
-                                          th:title="'创建于' + ${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
+                                          th:title="'創建於' + ${#dates.format(post.spec.publishTime,'yyyy-MM-dd HH:mm:ss')}">
                                     </time>
                                 </div>
                                 <a class="article-sort-item-title" onclick="window.event.cancelBubble=!0"
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- 分页 -->
+                <!-- 分頁 -->
                 <div th:replace="~{modules/widgets/page :: page('/archives',${archives},false,'')}"></div>
             </div>
             <!-- sidebar -->

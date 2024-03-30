@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const postContent = document.querySelector('.post-content');
         if (postContent == null) return;
         const titles = postContent.querySelectorAll('h1,h2,h3,h4,h5,h6');
-        // 没有 toc 目录，则直接移除
+        // 沒有 toc 目錄，則直接移除
         if (titles.length === 0 || !titles) {
             const cardToc = document.getElementById("card-toc");
             cardToc?.remove();
@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $('#to_comment').attr('style', 'display: none');
         }
 
-        // 當滾動條小于 0 的時候
+        // 當滾動條小於 0 的時候
         if (document.body.scrollHeight <= innerHeight) {
             $rightside.style.cssText = 'opacity: 1; transform: translateX(-58px)'
             return
@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /**
      * menu
      * 側邊欄sub-menu 展開/收縮
-     * 解決menus在觸摸屏下，滑動屏幕menus_item_child不消失的問題（手機hover的bug)
+     * 解決menus在觸摸屏下，滑動螢幕menus_item_child不消失的問題（手機hover的bug)
      */
     const clickFnOfSubMenu = function () {
         document.querySelectorAll('#sidebar-menus .expand').forEach(function (e) {
@@ -365,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /**
-     * 複製時加上版權信息
+     * 複製時加上版權資訊
      */
     const addCopyright = () => {
         const copyright = GLOBAL_CONFIG.copyright
@@ -396,7 +396,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const addRuntime = () => {
         const $runtimeCount = document.getElementById('runtimeshow');
         if ($runtimeCount) {
-            var s1 = $runtimeCount.innerText;;//建站时间
+            var s1 = $runtimeCount.innerText;;//建站時間
             if (s1) {
                 s1 = new Date(s1.replace(/-/g, "/"));
                 s2 = new Date();

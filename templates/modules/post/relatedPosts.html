@@ -1,5 +1,5 @@
 
-<!-- 阅读建议 -->
+<!-- 閱讀建議 -->
 <th:block  th:if="${not #lists.isEmpty(post.categories)}" th:with="recommendQuantity = ${theme.config.post.recommendQuantity},
 recommandPosts = ${postFinder.listByCategory(1,recommendQuantity == 'six' ? 7 : recommendQuantity == 'two' ? 3 : 1,post.categories.get(0).metadata.name)},
 containsTitle = ${#strings.contains(recommandPosts,post.spec.title)},
@@ -7,11 +7,11 @@ postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,'?') ? theme
     <div class="relatedPosts" th:if="${recommandPosts.total>1}">
         <div class="headline">
             <i class="haofont hao-icon-cainixihuan" style="font-size: 1.1rem;"></i>
-            <span>阅读建议</span>
+            <span>閱讀建議</span>
         </div>
         <!-- 六篇文章 -->
         <div th:if="${#strings.equals(recommendQuantity, 'six')}" class="relatedPosts-list">
-            <!-- 建议阅读，这里可以自定义文章数量，然后遍历展示 -->
+            <!-- 建議閱讀，這裡可以自訂文章數量，然後遍歷展示 -->
             <th:block th:each="recommandPost,iterStat :${recommandPosts}"
                       th:if="${not #strings.equals(post.spec.title, recommandPost.spec.title)}">
                 <div th:if="${!containsTitle ? iterStat.index <6 : true}">
@@ -30,7 +30,7 @@ postRandomImg=${#strings.contains(theme.config.layout.postRandomImg,'?') ? theme
                 </div>
             </th:block>
         </div>
-        <!-- 两篇文章 -->
+        <!-- 兩篇文章 -->
         <div th:if="${#strings.equals(recommendQuantity, 'two')}" class="relatedPosts-list">
             <th:block th:each="recommandPost,iterStat :${recommandPosts}"
                       th:if="${not #strings.equals(post.spec.title, recommandPost.spec.title)}">

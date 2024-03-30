@@ -1,15 +1,15 @@
 if(GLOBAL_CONFIG.htmlType!='comments' && document.querySelector('#post-comment')) {
 
     var commentBarrageConfig = {
-        //同时最多显示弹幕数
+        //同時最多顯示彈幕數
         maxBarrage: GLOBAL_CONFIG.source.comments.maxBarrage,
-        //弹幕显示间隔时间ms
+        //彈幕顯示間隔時間ms
         barrageTime: GLOBAL_CONFIG.source.comments.barrageTime,
-        //twikoo部署地址腾讯云的为环境ID
+        //twikoo部署地址騰訊雲的為環境ID
         twikooUrl: GLOBAL_CONFIG.source.twikoo.twikooUrl,
         artalkUrl: GLOBAL_CONFIG.source.artalk.artalkUrl,
         walineUrl: GLOBAL_CONFIG.source.waline.serverURL,
-        //token获取见上方
+        //token獲取見上方
         accessToken: GLOBAL_CONFIG.source.twikoo.accessToken,
         mailMd5: GLOBAL_CONFIG.source.comments.mailMd5,
         pageUrl: window.location.pathname.replace(/\/page\/\d$/, ""),
@@ -26,14 +26,14 @@ if(GLOBAL_CONFIG.htmlType!='comments' && document.querySelector('#post-comment')
 
     $(".comment-barrage").hover(function () {
         hoverOnCommentBarrage = true;
-        //console.log("热评悬浮");
+        //console.log("熱評懸浮");
     }, function () {
         hoverOnCommentBarrage = false;
-        //console.log("停止悬浮");
+        //console.log("停止懸浮");
     });
 
     function initCommentBarrage() {
-        //console.log("开始创建热评")
+        //console.log("開始創建熱評")
 
         if(commentBarrageConfig.use=='Twikoo'){
             var data = JSON.stringify({
@@ -173,8 +173,8 @@ if(GLOBAL_CONFIG.htmlType!='comments' && document.querySelector('#post-comment')
         let comment = isTwikoo ? data.comment :
             isArtalk ? data.content :
                 isWaline ? data.comment : '';
-        let badge_name = isArtalk ? data.badge_name : '博主'
-        let badgeName = !barrageBlogger ? "热评" : badge_name != '' ? badge_name : "博主"
+        let badge_name = isArtalk ? data.badge_name : '部落客'
+        let badgeName = !barrageBlogger ? "熱評" : badge_name != '' ? badge_name : "部落客"
         let barrage = document.createElement('div');
         let width = commentBarrageConfig.dom.clientWidth;
         let height = commentBarrageConfig.dom.clientHeight;
@@ -191,25 +191,25 @@ if(GLOBAL_CONFIG.htmlType!='comments' && document.querySelector('#post-comment')
         </div>
         <a class="barrageContent" href="javascript:heo.scrollTo('${id}');">${comment}</a>
         `
-        // 获取hao标签内的所有pre元素
+        // 獲取hao標籤內的所有pre元素
         let haoPres = barrage.querySelectorAll(".barrageContent pre");
 
-        // 遍历每个pre元素，将其替换为"【代码】"
+        // 遍歷每個pre元素，將其替換為"【代碼】"
         haoPres.forEach((pre) => {
             let codePlaceholder = document.createElement("span");
-            codePlaceholder.innerText = "【代码】";
+            codePlaceholder.innerText = "【代碼】";
             pre.parentNode.replaceChild(codePlaceholder, pre);
         });
 
-        // 获取hao标签内的所有图片元素
+        // 獲取hao標籤內的所有圖片元素
         let haoImages = barrage.querySelectorAll(".barrageContent img");
 
-        // 遍历每个图片元素，将其替换为"【图片】"，但排除带有class=tk-owo-emotion的图片
+        // 遍歷每個圖片元素，將其替換為"【圖片】"，但排除帶有class=tk-owo-emotion的圖片
         haoImages.forEach((image) => {
             if (!image.classList.contains("tk-owo-emotion")) {
-                image.style.display = "none"; // 隐藏图片
+                image.style.display = "none"; // 隱藏圖片
                 let placeholder = document.createElement("span");
-                placeholder.innerText = "【图片】";
+                placeholder.innerText = "【圖片】";
                 image.parentNode.replaceChild(placeholder, image);
             }
         });
@@ -228,12 +228,12 @@ if(GLOBAL_CONFIG.htmlType!='comments' && document.querySelector('#post-comment')
 
     if (localStorage.getItem('commentBarrageSwitch') !== 'false') {
         $(".comment-barrage").show();
-        $(".menu-commentBarrage-text").text("关闭热评");
+        $(".menu-commentBarrage-text").text("關閉熱評");
         document.querySelector("#consoleCommentBarrage").classList.add("on");
 
     } else {
         $(".comment-barrage").hide();
-        $(".menu-commentBarrage-text").text("显示热评");
+        $(".menu-commentBarrage-text").text("顯示熱評");
         document.querySelector("#consoleCommentBarrage").classList.remove("on");
 
 

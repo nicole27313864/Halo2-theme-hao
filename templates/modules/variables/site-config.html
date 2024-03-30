@@ -1,7 +1,7 @@
-<!-- 声明一些公共信息 -->
+<!-- 聲明一些公共資訊 -->
 <script id="site-config" th:inline="javascript">
     var GLOBAL_CONFIG = {
-        // 页面类型 index,page,post,tag,category
+        // 頁面類型 index,page,post,tag,category
         htmlType: [[${ htmlType }]],
         postTitle: [[${ htmlType == 'post' ? post.spec.title : htmlType == 'page' ? singlePage.spec.title : ''}]],
         isPost: [[${htmlType == 'post'}]],
@@ -21,17 +21,17 @@
         profileStyle: [[${theme.config.sidebar.profile.profileStyle}]],
         rightMenuEnable: [[${theme.config.tool.rightMenu.rightMenuEnable}]],
         date_suffix: {
-            just: '刚刚',
-            min: '分钟前',
-            hour: '小时前',
+            just: '剛剛',
+            min: '分鐘前',
+            hour: '小時前',
             day: '天前',
-            month: '个月前'
+            month: '個月前'
         },
         Snackbar: {
-            chs_to_cht: "你已切换为繁体",
-            cht_to_chs: "你已切换为简体",
-            day_to_night: "你已切换为深色模式",
-            night_to_day: "你已切换为浅色模式",
+            chs_to_cht: "你已切換為繁體",
+            cht_to_chs: "你已切換為簡體",
+            day_to_night: "你已切換為深色模式",
+            night_to_day: "你已切換為淺色模式",
             bgLight: "[(${theme.config.style.themeLightSkin})]",
             bgDark: "[(${theme.config.style.themeDarkSkin})]",
             position: "top-center",
@@ -40,9 +40,9 @@
             defaultEncoding: [[${theme.config.style.translate.defaultEncoding}]],
             translateDelay: 0,
             msgToTraditionalChinese: "繁",
-            msgToSimplifiedChinese: "简",
+            msgToSimplifiedChinese: "簡",
             rightMenuMsgToTraditionalChinese: "轉為繁體",
-            rightMenuMsgToSimplifiedChinese: "转为简体"
+            rightMenuMsgToSimplifiedChinese: "轉為簡體"
         },
         prism: {
             enable: [[${ theme.config.code.enable }]],
@@ -98,8 +98,8 @@
             postAi: {
                 ai: [[${htmlType != 'post' || !theme.config.post.aiDescription.aiDescriptionEnable  ?  ''  :
                                     theme.config.post.aiDescription.mode != 'local' && !theme.config.post.aiDescription.switchBtn ? '' :
-                                    post.spec.excerpt.autoGenerate ? '本地模式需要自己填写文章摘要' :
-                                    #strings.isEmpty(post.status.excerpt) ? '请填写文章摘要' : post.status.excerpt  }]],
+                                    post.spec.excerpt.autoGenerate ? '本地模式需要自己填寫文章摘要' :
+                                    #strings.isEmpty(post.status.excerpt) ? '請填寫文章摘要' : post.status.excerpt  }]],
                 randomNum: [[${theme.config.post.aiDescription.randomNum}]],
                 basicWordCount: [[${theme.config.post.aiDescription.basicWordCount}]],
                 btnLink: "[(${theme.config.post.aiDescription.btnLink})]",

@@ -5,13 +5,13 @@ checkOpen.toString = function () {
     this.opened = true;
 };
 
-//封面纯色
+//封面純色
 function coverColor() {
     var path = document.getElementById("post-cover")?.src;
     // console.log(path);
     if (path !== undefined) {
 
-        // 获取颜色 https://github.com/fast-average-color/fast-average-color
+        // 獲取顏色 https://github.com/fast-average-color/fast-average-color
         const fac = new FastAverageColor();
 
         fac.getColorAsync(path, {
@@ -20,7 +20,7 @@ function coverColor() {
         })
             .then(color => {
                 /**
-                 * 获取数据后的处理程序
+                 * 獲取數據後的處理程序
                  */
                 var value = color.hex;
                 // console.log(value);
@@ -58,7 +58,7 @@ function coverColor() {
     }
 }
 
-//RGB颜色转化为16进制颜色
+//RGB顏色轉化為16進位制顏色
 function colorHex(str) {
     var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
     var that = str;
@@ -92,7 +92,7 @@ function colorHex(str) {
     }
 }
 
-//16进制颜色转化为RGB颜色
+//16進位制顏色轉化為RGB顏色
 function colorRgb(str) {
     var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
     var sColor = str.toLowerCase();
@@ -104,7 +104,7 @@ function colorRgb(str) {
             }
             sColor = sColorNew;
         }
-        //处理六位的颜色值
+        //處理六位的顏色值
         var sColorChange = [];
         for (var i = 1; i < 7; i += 2) {
             sColorChange.push(parseInt("0x" + sColor.slice(i, i + 2)));
@@ -115,7 +115,7 @@ function colorRgb(str) {
     }
 }
 
-//变暗变亮主方法
+//變暗變亮主方法
 function LightenDarkenColor(col, amt) {
     var usePound = false;
 
@@ -145,7 +145,7 @@ function LightenDarkenColor(col, amt) {
     return (usePound ? "#" : "") + String("000000" + (g | (b << 8) | (r << 16)).toString(16)).slice(-6);
 }
 
-//判断是否为亮色
+//判斷是否為亮色
 function getContrastYIQ(hexcolor) {
     var colorrgb = colorRgb(hexcolor);
     var colors = colorrgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
@@ -185,30 +185,30 @@ function showcopy() {
     }
 }
 
-// 早上好问好
-// 获取时间
+// 早安問好
+// 獲取時間
 var getTimeState = () => {
 
         if (GLOBAL_CONFIG.profileStyle == 'default') {
-            // 获取当前时间
+            // 獲取當前時間
             var timeNow = new Date();
-            // 获取当前小时
+            // 獲取當前小時
             var hours = timeNow.getHours();
-            // 设置默认文字
+            // 設置默認文字
             var text = ``;
-            // 判断当前时间段
+            // 判斷當前時間段
             if (hours >= 0 && hours <= 5) {
                 text = `晚安`;
             } else if (hours > 5 && hours <= 10) {
-                text = `早上好`;
+                text = `早安`;
             } else if (hours > 10 && hours <= 14) {
-                text = `中午好`;
+                text = `午安`;
             } else if (hours > 14 && hours <= 18) {
-                text = `下午好`;
+                text = `午安`;
             } else if (hours > 18 && hours <= 24) {
-                text = `晚上好`;
+                text = `晚安`;
             }
-            // 返回当前时间段对应的状态
+            // 返回當前時間段對應的狀態
             return text;
 
         }
@@ -216,12 +216,12 @@ var getTimeState = () => {
         if (GLOBAL_CONFIG.profileStyle == 'one') {
             var e = (new Date).getHours()
                 , t = "";
-            return e >= 0 && e <= 5 ? t = "睡个好觉，保证精力充沛" : e > 5 && e <= 10 ? t = "一日之计在于晨" : e > 10 && e <= 14 ? t = "吃饱了才有力气干活" : e > 14 && e <= 18 ? t = "集中精力，攻克难关" : e > 18 && e <= 24 && (t = "不要太劳累了，早睡更健康"),
+            return e >= 0 && e <= 5 ? t = "睡個好覺，保證精力充沛" : e > 5 && e <= 10 ? t = "一日之計在於晨" : e > 10 && e <= 14 ? t = "吃飽了才有力氣做事" : e > 14 && e <= 18 ? t = "集中精力，攻克難關" : e > 18 && e <= 24 && (t = "不要太勞累了，早睡更健康"),
                 t
         }
 
     },
-//深色模式切换
+//深色模式切換
     switchDarkMode = () => {
         "dark" === document.documentElement.getAttribute("data-theme") ? (activateLightMode(),
             saveToLocal.set("theme", "light", 2),
@@ -229,10 +229,10 @@ var getTimeState = () => {
             $(".menu-darkmode-text").text("深色模式")) : (activateDarkMode(),
             saveToLocal.set("theme", "dark", 2),
         void 0 !== GLOBAL_CONFIG.Snackbar && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night, false, 2000),
-            $(".menu-darkmode-text").text("浅色模式")),
+            $(".menu-darkmode-text").text("淺色模式")),
             handleCases()
         heo.darkModeStatus();
-        //代码块
+        //代碼塊
         if (GLOBAL_CONFIG.prism.enable) {
             halo.dataCodeTheme();
         }
@@ -246,7 +246,7 @@ var getTimeState = () => {
         switchDarkMode: switchDarkMode
     };
 
-//引用到评论
+//引用到評論
 function rightMenuCommentText(txt) {
     if (GLOBAL_CONFIG.rightMenuEnable) {
         rm.hideRightMenu();
@@ -266,35 +266,35 @@ function rightMenuCommentText(txt) {
     }
 }
 
-//替换所有内容
+//替換所有內容
 function replaceAll(string, search, replace) {
     return string.split(search).join(replace);
 }
 
-// 移除赞赏蒙版
+// 移除讚賞遮色片
 function RemoveRewardMask() {
     if (!document.querySelector(".reward-main")) return;
     document.querySelector(".reward-main").style.display = "none";
     document.getElementById("quit-box").style.display = "none";
 }
 
-//添加赞赏蒙版
+//添加讚賞遮色片
 function AddRewardMask() {
     if (!document.querySelector(".reward-main")) return;
     document.querySelector(".reward-main").style.display = "flex";
     document.getElementById("quit-box").style.display = "flex";
 }
 
-//监听蒙版关闭
+//監聽遮色片關閉
 document.addEventListener('touchstart', e => {
     RemoveRewardMask()
 }, false)
 
-//监听ctrl+C
+//監聽ctrl+C
 $(document).unbind('keydown').bind('keydown', function (e) {
     if (GLOBAL_CONFIG.rightMenuEnable) {
         if ((e.ctrlKey || e.metaKey) && (e.keyCode == 67) && (selectTextNow != '')) {
-            btf.snackbarShow('复制成功，复制和转载请标注本文地址');
+            btf.snackbarShow('複製成功，複製和轉載請標註本文地址');
             rm.rightmenuCopyText(selectTextNow);
             return false;
         }
@@ -303,12 +303,12 @@ $(document).unbind('keydown').bind('keydown', function (e) {
     }
 })
 
-//颜色
+//顏色
 document.addEventListener('scroll', btf.throttle(function () {
     heo.initThemeColor()
 }, 200))
 
-//友链随机传送
+//友鏈隨機傳送
 function travelling() {
     function getLinks() {
         const links = "/apis/api.plugin.halo.run/v1alpha1/plugins/PluginLinks/links?keyword=&sort=priority,asc"
@@ -329,7 +329,7 @@ function travelling() {
             name = randomFriendLinks[0].spec.displayName;
             link = randomFriendLinks[0].spec.url;
         }
-        var msg = "点击前往按钮进入随机一个友链，不保证跳转网站的安全性和可用性。本次随机到的是本站友链：「" + name + "」";
+        var msg = "點擊前往按鈕進入隨機一個友鏈，不保證跳轉網站的安全性和可用性。本次隨機到的是本站友鏈：「" + name + "」";
         const style = document.createElement('style');
         document.head.appendChild(style);
         const styleSheet = style.sheet;
@@ -360,7 +360,7 @@ function travelling() {
 
 //前往黑洞
 function toforeverblog() {
-    var msg = "点击前往按钮进入「十年之约」项目中的成员博客，不保证跳转网站的安全性和可用性";
+    var msg = "點擊前往按鈕進入「十年之約」項目中的成員部落格，不保證跳轉網站的安全性和可用性";
     Snackbar.show({
         text: msg,
         duration: 8000,
@@ -374,9 +374,9 @@ function toforeverblog() {
     });
 }
 
-//前往开往项目
+//前往開往項目
 function totraveling() {
-    btf.snackbarShow("即将跳转到「开往」项目的成员博客，不保证跳转网站的安全性和可用性", function (element) {
+    btf.snackbarShow("即將跳轉到「開往」項目的成員部落格，不保證跳轉網站的安全性和可用性", function (element) {
         element.style.opacity = 0,
         travellingsTimer && clearTimeout(travellingsTimer)
     }, 5000, "取消"),
@@ -385,7 +385,7 @@ function totraveling() {
         }, "5000")
 }
 
-// 移除加载动画
+// 移除載入動畫
 function removeLoading() {
     setTimeout(function () {
         preloader.endLoading();
@@ -396,40 +396,40 @@ function addFriendLink() {
     var input = document.getElementsByClassName(GLOBAL_CONFIG.source.comments.textarea)[0];
     let evt = document.createEvent('HTMLEvents');
     evt.initEvent('input', true, true);
-    input.value = '昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n';
+    input.value = '暱稱（請勿包含部落格等字樣）：\n網站地址（要求部落格地址，請勿提交個人首頁）：\n頭像圖片url（請提供盡可能清晰的圖片，我會上傳到我自己的圖床）：\n描述：\n';
     input.dispatchEvent(evt);
     heo.scrollTo("#post-comment");
     input.focus();
     input.setSelectionRange(-1, -1);
 }
 
-//从一个给定的数组arr中,随机返回num个不重复项
+//從一個給定的數組arr中,隨機返回num個不重複項
 function getArrayItems(arr, num) {
-    //新建一个数组,将传入的数组复制过来,用于运算,而不要直接操作传入的数组;
+    //新建一個數組,將傳入的數組複製過來,用於運算,而不要直接操作傳入的數組;
     var temp_array = new Array();
     for (var index in arr) {
         temp_array.push(arr[index]);
     }
-    //取出的数值项,保存在此数组
+    //取出的數值項,保存在此數組
     var return_array = new Array();
     for (var i = 0; i < num; i++) {
-        //判断如果数组还有可以取出的元素,以防下标越界
+        //判斷如果數組還有可以取出的元素,以防下標越界
         if (temp_array.length > 0) {
-            //在数组中产生一个随机索引
+            //在數組中產生一個隨機索引
             var arrIndex = Math.floor(Math.random() * temp_array.length);
-            //将此随机索引的对应的数组元素值复制出来
+            //將此隨機索引的對應的數組元素值複製出來
             return_array[i] = temp_array[arrIndex];
-            //然后删掉此索引的数组元素,这时候temp_array变为新的数组
+            //然後刪掉此索引的數組元素,這時候temp_array變為新的數組
             temp_array.splice(arrIndex, 1);
         } else {
-            //数组中数据项取完后,退出循环,比如数组本来只有10项,但要求取出20项.
+            //數組中數據項取完後,退出循環,比如數組本來只有10項,但要求取出20項.
             break;
         }
     }
     return return_array;
 }
 
-//评论增加放大功能
+//評論增加放大功能
 function owoBig() {
     new MutationObserver((e => {
             for (let t of e)
@@ -473,14 +473,14 @@ function owoBig() {
     })
 }
 
-// 检测按键
+// 檢測按鍵
 window.onkeydown = function (e) {
     if (e.keyCode === 123) {
-        btf.snackbarShow('开发者模式已打开，请遵循GPL协议', false, 3000)
+        btf.snackbarShow('開發者模式已打開，請遵循GPL協議', false, 3000)
     }
 }
 
-// 阻止搜索滚动
+// 阻止搜索滾動
 // document.querySelector('#algolia-search').addEventListener('wheel', (e) => {
 //   e.preventDefault()
 // })
@@ -491,22 +491,22 @@ document.querySelector('#console') && document.querySelector('#console').addEven
 //   e.preventDefault()
 // })
 
-//自动调整即刻短文尺寸
+//自動調整即刻短文尺寸
 window.addEventListener("resize", (function () {
         document.querySelector("#waterfall") && heo.reflashEssayWaterFall()
     }
 ));
 
-//首页大卡片恢复显示
+//首頁大卡片恢復顯示
 $(".topGroup").hover(function () {
-    // console.log("卡片悬浮");
+    // console.log("卡片懸浮");
 }, function () {
     hoverOnCommentBarrage = false;
 
     if (document.getElementById("todayCard")) {
         document.getElementById("todayCard").classList.remove('hide');
         document.getElementById('todayCard').style.zIndex = 1;
-        // console.log("卡片停止悬浮");
+        // console.log("卡片停止懸浮");
     }
 });
 
@@ -525,7 +525,7 @@ function initObserver() {
     )).observe(e)
 }
 
-// 页面百分比
+// 頁面百分比
 function percent() {
     let e = document.documentElement.scrollTop || window.pageYOffset
         ,
@@ -535,14 +535,14 @@ function percent() {
     var a = window.scrollY + document.documentElement.clientHeight
         , i = document.getElementById("post-comment") || document.getElementById("footer");
     i.offsetTop + i.offsetHeight / 2 < a || o > 90 ? (document.querySelector("#nav-totop").classList.add("long"),
-        n.innerHTML = "返回顶部") : (document.querySelector("#nav-totop").classList.remove("long"),
+        n.innerHTML = "返回頂部") : (document.querySelector("#nav-totop").classList.remove("long"),
     o >= 0 && (n.innerHTML = o)),
         endresult = t - e,
         endresult < 100 ? $(".needEndHide").addClass("hide") : $(".needEndHide").removeClass("hide"),
         window.onscroll = percent
 }
 
-// 首页分页隐藏置顶内容
+// 首頁分頁隱藏置頂內容
 function checkUrlAndAddHideBanner() {
     var e = window.location.href;
     if (/\/page\//.test(e)) {
@@ -580,7 +580,7 @@ function listenToPageInputPress() {
 }
 
 function initBlog() {
-    // 图片主色
+    // 圖片主色
     GLOBAL_CONFIG.source.post.dynamicBackground && coverColor(),
     GLOBAL_CONFIG.rightMenuEnable && addRightMenuClickEvent(),
         percent(),
@@ -591,7 +591,7 @@ function initBlog() {
         heo.stopImgRightDrag(),
         heo.addPowerLinksInPostRightSide(),
         heo.qrcodeCreate(),
-        //右下角 snackbar 弹窗
+        //右下角 snackbar 跳出視窗
     GLOBAL_CONFIG.source.tool.switch && heo.hidecookie(),
         heo.onlyHome(),
         heo.addNavBackgroundInit(),
@@ -601,7 +601,7 @@ function initBlog() {
         heo.categoriesBarActive(),
         heo.initThemeColor(),
         heo.topCategoriesBarScroll(),
-        //隐藏加载动画
+        //隱藏載入動畫
     GLOBAL_CONFIG.loadingBox && heo.hideLoading(),
         heo.tagPageActive(),
         initObserver(),
@@ -612,17 +612,17 @@ function initBlog() {
 
 }
 
-// 如果当前页有评论就执行函数
+// 如果當前頁有評論就執行函數
 document.getElementById("post-comment") && owoBig()
 
-//检查是否开启快捷键
+//檢查是否開啟快捷鍵
 // if (localStorage.getItem('keyboardToggle') !== 'false') {
 //     document.querySelector("#consoleKeyboard").classList.add("on");
 // } else {
 //     document.querySelector("#consoleKeyboard").classList.remove("on");
 // }
 
-//响应esc键
+//響應esc鍵
 $(window).on('keydown', function (ev) {
 
     // Escape
@@ -634,36 +634,36 @@ $(window).on('keydown', function (ev) {
 
     if (heo_keyboard && ev.shiftKey && !heo_intype) {
 
-        // 显示快捷键面板 shift键
+        // 顯示快捷鍵面板 shift鍵
         // if (ev.keyCode == 16) {
         //     document.querySelector("#keyboard-tips").classList.add("show");
         // }
 
-        //关闭快捷键 shift+K
+        //關閉快捷鍵 shift+K
         if (ev.keyCode == 75) {
             heo.keyboardToggle();
             return false;
         }
 
-        //响应打开控制台键 shift+A
+        //響應打開控制台鍵 shift+A
         if (ev.keyCode == 65) {
             heo.showConsole();
             return false;
         }
 
-        //音乐控制 shift+M
+        //音樂控制 shift+M
         if (ev.keyCode == 77) {
             heo.musicToggle();
             return false;
         }
 
-        //随机文章 shift+R
+        //隨機文章 shift+R
         if (ev.keyCode == 82) {
             toRandomPost();
             return false;
         }
 
-        //回到首页 shift+H
+        //回到首頁 shift+H
         if (ev.keyCode == 72) {
             pjax.loadUrl("/");
             return false;
@@ -675,25 +675,25 @@ $(window).on('keydown', function (ev) {
             return false;
         }
 
-        //友链鱼塘 shift+F
+        //友鏈魚塘 shift+F
         if (ev.keyCode == 70) {
             pjax.loadUrl("/moments/");
             return false;
         }
 
-        //友情链接页面 shift+L
+        //友情連結頁面 shift+L
         if (ev.keyCode == 76) {
             pjax.loadUrl("/link/");
             return false;
         }
 
-        //关于本站 shift+P
+        //關於本站 shift+P
         if (ev.keyCode == 80) {
             pjax.loadUrl("/about/");
             return false;
         }
 
-        //在线工具 shift+T
+        //線上工具 shift+T
         if (ev.keyCode == 84) {
             pjax.loadUrl("/tlink/");
             return false;
@@ -704,13 +704,13 @@ $(window).on('keydown', function (ev) {
 });
 
 // $(window).on('keyup', function (ev) {
-//     // 显示快捷键面板
+//     // 顯示快捷鍵面板
 //     if (ev.keyCode == 16) {
 //         document.querySelector("#keyboard-tips").classList.remove("show");
 //     }
 // });
 
-//输入状态检测
+//輸入狀態檢測
 $("input").focus(function () {
     heo_intype = true;
 });
@@ -724,12 +724,12 @@ $("textarea").focusout(function () {
     heo_intype = false;
 });
 
-//老旧浏览器检测
+//老舊瀏覽器檢測
 function browserTC() {
     btf.snackbarShow("");
     Snackbar.show({
-        text: '为了保护访客访问安全，本站已停止对你正在使用的过低版本浏览器的支持',
-        actionText: '关闭',
+        text: '為了保護訪客訪問安全，本站已停止對你正在使用的過低版本瀏覽器的支持',
+        actionText: '關閉',
         duration: '6000',
         pos: 'bottom-right'
     });
@@ -761,7 +761,7 @@ function browserVersion() {
             browserTC()
         }
     } else if (isSafari) {
-        //不知道Safari多少版本才算老旧
+        //不知道Safari多少版本才算老舊
     }
 }
 
@@ -783,22 +783,22 @@ function getCookie(name) {
 if (getCookie('browsertc') != 1) {
     setCookies({
         browsertc: 1,
-    }, 1); //设置cookie缓存一天，即一天弹一次
+    }, 1); //設置cookie快取一天，即一天彈一次
     browserVersion();
 }
 
-//当前窗口得到焦点 
+//當前窗口得到焦點 
 // window.onfocus = function () {
 //     document.querySelector("#keyboard-tips").classList.remove("show");
 // };
 
-//注入函数
+//注入函數
 document.addEventListener('pjax:click', function () {
-    //显示加载进度条
+    //顯示載入進度條
     if (GLOBAL_CONFIG.loadProgressBar) {
         Pace.restart();
     }
-    //显示加载动画
+    //顯示載入動畫
     if (GLOBAL_CONFIG.loadingBox) {
         heo.showLoading();
     }

@@ -1,30 +1,30 @@
 (function () {
 
-    // 获取挂载元素，即文章内容所在的容器元素
+    // 獲取掛載元素，即文章內容所在的容器元素
     let targetElement = document.querySelector('#post #article-container');
-    // 若el配置不存在则自动获取，如果auto_mount配置为真也自动获取
+    // 若el配置不存在則自動獲取，如果auto_mount配置為真也自動獲取
     if (!targetElement) {
         return;
     };
 
     let ai =  GLOBAL_CONFIG.source.postAi.ai;
-    let randomNum = GLOBAL_CONFIG.source.postAi.randomNum; //按钮最大的随机次数，也就是一篇文章最大随机出来几种
-    let basicWordCount = GLOBAL_CONFIG.source.postAi.basicWordCount; // 最低获取字符数, 最小1000, 最大1999
+    let randomNum = GLOBAL_CONFIG.source.postAi.randomNum; //按鈕最大的隨機次數，也就是一篇文章最大隨機出來幾種
+    let basicWordCount = GLOBAL_CONFIG.source.postAi.basicWordCount; // 最低獲取字元數, 最小1000, 最大1999
     let btnLink = GLOBAL_CONFIG.source.postAi.btnLink;
     let gptName = GLOBAL_CONFIG.source.postAi.gptName;
     let modeName = GLOBAL_CONFIG.source.postAi.modeName;
-    let switchBtn = GLOBAL_CONFIG.source.postAi.switchBtn //# 可以配置是否显示切换按钮 以切换tianli/local
+    let switchBtn = GLOBAL_CONFIG.source.postAi.switchBtn //# 可以配置是否顯示切換按鈕 以切換tianli/local
     let keys = GLOBAL_CONFIG.source.postAi.keys;
     let Referers = GLOBAL_CONFIG.source.postAi.Referers;
 
     // let post = document.querySelector('#post')
     // const interface = {
     //     name: "AI-摘要",
-    //     aiToggle: "切换",
+    //     aiToggle: "切換",
     //     version: "Tianli GPT",
-    //     button: ["介绍自己", "生成本文简介", "推荐相关文章", "前往主页"],
+    //     button: ["介紹自己", "生成本文簡介", "推薦相關文章", "前往首頁"],
     // }
-    // // 插入html结构
+    // // 插入html結構
     // const post_ai_box = document.createElement('div');
     // post_ai_box.className = 'post-ai';
     // post.insertBefore(post_ai_box, post.firstChild);
@@ -50,19 +50,19 @@
     //   <div class="ai-btn-item">${interface.button[1]}</div>
     //   <div class="ai-btn-item">${interface.button[2]}</div>
     //   <div class="ai-btn-item">${interface.button[3]}</div>
-    //   <div class="ai-btn-item" id="go-tianli-blog">前往tianli博客</div>
+    //   <div class="ai-btn-item" id="go-tianli-blog">前往tianli部落格</div>
     // </div>`;
     //
     // post_ai_box.innerHTML = PostAI;
 
-    // 当前随机到的ai摘要到index
+    // 當前隨機到的ai摘要到index
     let lastAiRandomIndex = -1;
-    let animationRunning = true; // 标志变量，控制动画函数的运行
-    // 当前gpt模式
+    let animationRunning = true; // 標誌變數，控制動畫函數的運行
+    // 當前gpt模式
     let mode = modeName
-    // 刷新点击次数
+    // 刷新點擊次數
     let refreshNum = 0
-    // 记录上一次传递给aiAbstract的参数
+    // 記錄上一次傳遞給aiAbstract的參數
     let prevParam;
     const aiTitleRefreshIcon = document.querySelector(".ai-title .haofont.hao-icon-arrow-rotate-right")
     const explanation = document.querySelector(".ai-explanation");
@@ -76,7 +76,7 @@
     let elapsed = 0;
     const animate = timestamp => {
         if (!animationRunning) {
-            return; // 动画函数停止运行
+            return; // 動畫函數停止運行
         }
         if (!animate.start) animate.start = timestamp;
         elapsed = timestamp - animate.start;
@@ -97,7 +97,7 @@
                     document.querySelector(".ai-explanation .ai-cursor").style.opacity = "0";
                 }
                 if (i === ai_str_length - 1) {
-                    observer.disconnect(); // 暂停监听
+                    observer.disconnect(); // 暫停監聽
                     explanation.removeChild(explanation.firstElementChild);
                 }
                 sto[0] = setTimeout(() => {
@@ -111,7 +111,7 @@
     const observer = new IntersectionObserver(
         entries => {
             let isVisible = entries[0].isIntersecting;
-            animationRunning = isVisible; // 标志变量更新
+            animationRunning = isVisible; // 標誌變數更新
             if (animationRunning) {
                 delay_init = i === 0 ? 200 : 20;
                 sto[1] = setTimeout(() => {
@@ -138,25 +138,25 @@
         }
     }
     function startAI(str, df = true) {
-        i = 0; //重置计数器
+        i = 0; //重設計數器
         j = 1;
         clearSTO();
         animationRunning = false;
         elapsed = 0;
-        observer.disconnect(); // 暂停上一次监听
-        explanation.innerHTML = df ? "生成中. . ." : "请等待. . .";
+        observer.disconnect(); // 暫停上一次監聽
+        explanation.innerHTML = df ? "生成中. . ." : "請等待. . .";
         ai_str = str;
         ai_str_length = ai_str.length;
-        observer.observe(post_ai); //启动新监听
+        observer.observe(post_ai); //啟動新監聽
     }
 
     async function aiAbstract(num = basicWordCount) {
-        i = 0; //重置计数器
+        i = 0; //重設計數器
         j = 1;
         clearSTO();
         animationRunning = false;
         elapsed = 0;
-        observer.disconnect(); // 暂停上一次监听
+        observer.disconnect(); // 暫停上一次監聽
         if (mode === "tianli") {
             num = Math.max(10, Math.min(2000, num));
             const options = {
@@ -184,17 +184,17 @@
                 animationInterval = setInterval(() => {
                     const animationText = "生成中" + ".".repeat(j);
                     explanation.innerHTML = animationText;
-                    j = (j % 3) + 1; // 在 1、2、3 之间循环
+                    j = (j % 3) + 1; // 在 1、2、3 之間循環
                 }, 500);
                 const response = await fetch(`https://summary.tianli0.top/`, requestOptions);
                 let result;
                 if (response.status === 403) {
                     result = {
-                        summary: "403 refer与key不匹配，本地无法显示。"
+                        summary: "403 refer與key不匹配，本地無法顯示。"
                     }
                 } else if (response.status === 500) {
                     result = {
-                        summary: "500 系统内部错误"
+                        summary: "500 系統內部錯誤"
                     }
                 } else {
                     result = await response.json();
@@ -206,22 +206,22 @@
                 if (summary) {
                     startAI(summary);
                 } else {
-                    startAI("摘要获取失败!!!请检查Tianli服务是否正常!!!");
+                    startAI("摘要獲取失敗!!!請檢查Tianli服務是否正常!!!");
                 }
                 clearInterval(animationInterval)
 
             } catch (error) {
                 console.error(error);
-                explanation.innerHTML = "发生异常" + error;
+                explanation.innerHTML = "發生異常" + error;
             }
         } else {
-            const strArr = ai.split(",").map(item => item.trim()); // 将字符串转换为数组，去除每个字符串前后的空格
+            const strArr = ai.split(",").map(item => item.trim()); // 將字串轉換為數組，去除每個字串前後的空格
             if (strArr.length !== 1) {
-                let randomIndex = Math.floor(Math.random() * strArr.length); // 随机生成一个索引
-                while (randomIndex === lastAiRandomIndex) { // 如果随机到了上次的索引
-                    randomIndex = Math.floor(Math.random() * strArr.length); // 再次随机
+                let randomIndex = Math.floor(Math.random() * strArr.length); // 隨機生成一個索引
+                while (randomIndex === lastAiRandomIndex) { // 如果隨機到了上次的索引
+                    randomIndex = Math.floor(Math.random() * strArr.length); // 再次隨機
                 }
-                lastAiRandomIndex = randomIndex; // 更新上次随机到的索引
+                lastAiRandomIndex = randomIndex; // 更新上次隨機到的索引
                 startAI(strArr[randomIndex]);
             } else {
                 startAI(strArr[0])
@@ -233,7 +233,7 @@
     }
 
     function aiRecommend() {
-        i = 0; //重置计数器
+        i = 0; //重設計數器
         j = 1;
         clearSTO();
         animationRunning = false;
@@ -241,13 +241,13 @@
         explanation.innerHTML = "生成中. . .";
         ai_str = "";
         ai_str_length = "";
-        observer.disconnect(); // 暂停上一次监听
+        observer.disconnect(); // 暫停上一次監聽
         sto[2] = setTimeout(() => {
             explanation.innerHTML = recommendList();
         }, 600);
     }
     function aiGoHome() {
-        startAI("前往爱发电购买...", false);
+        startAI("前往愛發電購買...", false);
         sto[2] = setTimeout(() => {
             pjax.loadUrl("/");
         }, 1000);
@@ -255,9 +255,9 @@
 
     function Introduce() {
         if (mode == "tianli") {
-            startAI("我是文章辅助AI: TianliGPT，点击下方的按钮，让我生成本文简介、推荐相关文章等。")
+            startAI("我是文章輔助AI: TianliGPT，點擊下方的按鈕，讓我生成本文簡介、推薦相關文章等。")
         } else {
-            startAI("我是文章辅助AI: " + gptName + " GPT，点击下方的按钮，让我生成本文简介、推荐相关文章等。")
+            startAI("我是文章輔助AI: " + gptName + " GPT，點擊下方的按鈕，讓我生成本文簡介、推薦相關文章等。")
         }
     }
     function aiTitleRefreshIconClick() {
@@ -293,17 +293,17 @@
                     }
                 });
             }
-            return `很抱歉，无法找到类似的文章，你也可以看看本站最新发布的文章：<br /><div class="ai-recommend">${list}</div>`;
+            return `很抱歉，無法找到類似的文章，你也可以看看本站最新發布的文章：<br /><div class="ai-recommend">${list}</div>`;
         }
         thumbnail.forEach(item => {
             if (item) {
                 if(!title.includes(item.title)){
                     index +=1;
-                    list += `<div class="ai-recommend-item"><span>推荐${index}：</span><a href="javascript:;" onclick="pjax.loadUrl('${item.href}')" title="${item.title}" data-pjax-state="">${item.title}</a></div>`;
+                    list += `<div class="ai-recommend-item"><span>推薦${index}：</span><a href="javascript:;" onclick="pjax.loadUrl('${item.href}')" title="${item.title}" data-pjax-state="">${item.title}</a></div>`;
                 }
             }
         });
-        return `推荐文章：<br /><div class="ai-recommend">${list}</div>`;
+        return `推薦文章：<br /><div class="ai-recommend">${list}</div>`;
     }
 
 
@@ -343,15 +343,15 @@
         }
     }
 
-    //- 监听tag点击事件
+    //- 監聽tag點擊事件
     document.getElementById("ai-tag").addEventListener("click", () => {
         if (mode === "tianli") {
             document.querySelectorAll(".ai-btn-item").forEach(item => item.style.display = "none");
             document.getElementById("go-tianli-blog").style.display = "block";
-            startAI("你好，我是Tianli开发的摘要生成助理TianliGPT，是一个基于GPT-4的生成式AI。我在这里只负责摘要的预生成和显示，你无法与我直接沟通，如果你也需要一个这样的AI摘要接口，可以在下方购买。（暂未开放购买，敬请期待）")
+            startAI("你好，我是Tianli開發的摘要生成助理TianliGPT，是一個基於GPT-4的生成式AI。我在這裡只負責摘要的預生成和顯示，你無法與我直接溝通，如果你也需要一個這樣的AI摘要介面，可以在下方購買。（暫未開放購買，敬請期待）")
         } else {
             document.getElementById("go-tianli-blog").style.display = "none";
-            startAI("你好，我是本站摘要生成助理" + gptName + " GPT，是一个基于GPT-4的生成式AI。我在这里只负责摘要的预生成和显示，你无法与我直接沟通。")
+            startAI("你好，我是本站摘要生成助理" + gptName + " GPT，是一個基於GPT-4的生成式AI。我在這裡只負責摘要的預生成和顯示，你無法與我直接溝通。")
         }
 
     });
@@ -401,13 +401,13 @@
         });
     }
 
-    //读取文章中的所有文本
+    //讀取文章中的所有文本
     function getTitleAndContent(basicWordCount) {
         try {
             const title = document.title;
             const container = document.querySelector('#post #article-container');
             if (!container) {
-                console.warn('TianliGPT：找不到文章容器。请尝试将引入的代码放入到文章容器之后。如果本身没有打算使用摘要功能可以忽略此提示。');
+                console.warn('TianliGPT：找不到文章容器。請嘗試將引入的代碼放入到文章容器之後。如果本身沒有打算使用摘要功能可以忽略此提示。');
                 return '';
             }
             const paragraphs = container.getElementsByTagName('p');
@@ -420,7 +420,7 @@
             }
 
             for (let p of paragraphs) {
-                // 移除包含'http'的链接
+                // 移除包含'http'的連結
                 const filteredText = p.innerText.replace(/https?:\/\/[^\s]+/g, '');
                 content += filteredText;
             }
@@ -433,7 +433,7 @@
             const truncatedText = combinedText.slice(0, wordLimit);
             return truncatedText;
         } catch (e) {
-            console.error('TianliGPT错误：可能由于一个或多个错误导致没有正常运行，原因出在获取文章容器中的内容失败，或者可能是在文章转换过程中失败。', e);
+            console.error('TianliGPT錯誤：可能由於一個或多個錯誤導致沒有正常運行，原因出在獲取文章容器中的內容失敗，或者可能是在文章轉換過程中失敗。', e);
             return '';
         }
     }

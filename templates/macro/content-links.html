@@ -9,11 +9,11 @@
             <div class="banner-button-group">
                 <a class="banner-button secondary" data-pjax-state="" onclick="travelling()">
                     <i class="haofont hao-icon-paper-plane1"></i>
-                    <span class="banner-button-text">随机访问</span>
+                    <span class="banner-button-text">隨機訪問</span>
                 </a>
                 <a class="banner-button" href="#post-comment" rel="external nofollow">
                     <i class="haofont hao-icon-link"></i>
-                    <span class="banner-button-text">申请友链</span>
+                    <span class="banner-button-text">申請友鏈</span>
                 </a>
             </div>
             <div class="tags-group-all nowrapMove">
@@ -43,20 +43,20 @@
             </div>
         </div>
 
-        <!--互动友链-->
+        <!--互動友鏈-->
         <th:block th:replace="~{macro/links-canvas :: links-canvas(${groups})}" />
 
-        <!--钓鱼-->
+        <!--釣魚-->
         <th:block th:if="${not #lists.isEmpty(groups) && theme.config.fcircle.linksRandomFriendsEnable}">
             <div class="title-h2-a">
                 <div class="title-h2-a-left">
-                    <h2 style="padding-top:0;margin:.6rem 0 .6rem">🎣 钓鱼</h2>
+                    <h2 style="padding-top:0;margin:.6rem 0 .6rem">🎣 釣魚</h2>
                     <a class="random-post-start" href="javascript:fetchRandomPost();">
                         <i class="haofont hao-icon-arrow-rotate-right"></i>
                     </a>
                 </div>
                 <div th:if="${not #strings.isEmpty(theme.config.link.fcircleUrl)}" class="title-h2-a-right">
-                    <a class="random-post-all" th:href="${theme.config.link.fcircleUrl}" data-pjax-state="">查看鱼塘</a>
+                    <a class="random-post-all" th:href="${theme.config.link.fcircleUrl}" data-pjax-state="">查看魚塘</a>
                 </div>
             </div>
             <div id="random-post"></div>
@@ -82,7 +82,7 @@
 
                 <div class="flink-desc" th:if="${not #strings.isEmpty(#annotations.get(group, 'description'))}">[[${#annotations.get(group, 'description')}]]</div>
 
-                <!-- 第一个，使用卡片展示 -->
+                <!-- 第一個，使用卡片展示 -->
                 <div th:if="${#strings.equals(#annotations.get(group, 'displayStyle'),'beautify') && not #lists.isEmpty(group.links)}"
                      class="site-card-group">
 
@@ -171,9 +171,9 @@
                 var fdataUser = {
                     jsonurl: '',
                     apiurl: "[(${theme.config.fcircle.apiurl})]",
-                    apipublicurl: '', //默认公共库
-                    initnumber: 20,  //首次加载文章数
-                    stepnumber: 20,  //更多加载文章数
+                    apipublicurl: '', //默認公共庫
+                    initnumber: 20,  //首次載入文章數
+                    stepnumber: 20,  //更多載入文章數
                     article_sort: 'created', //文章排序 updated or created
                     error_img: 'https://sdn.geekzu.org/avatar/57d8260dfb55501c37dde588e7c3852c'
                 }

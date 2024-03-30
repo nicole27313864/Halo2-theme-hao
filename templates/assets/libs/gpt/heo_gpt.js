@@ -42,9 +42,9 @@ var heoGPT = {
             if (o.ok) {
                 return (await o.json()).summary
             }
-            throw Error("请求失败")
+            throw Error("請求失敗")
         } catch (e) {
-            return "AbortError" === e.name ? console.error("请求超时") : console.error("请求失败：", e), `获取文章摘要超时。当你出现这个问题时，可能是因为文章过长导致的AI运算量过大， 您可以稍等一下然后重新切换到TianliGPT模式，或者尝试使用${siteTitle}GPT模式。`
+            return "AbortError" === e.name ? console.error("請求超時") : console.error("請求失敗：", e), `獲取文章摘要超時。當你出現這個問題時，可能是因為文章過長導致的AI運算量過大， 您可以稍等一下然後重新切換到TianliGPT模式，或者嘗試使用${siteTitle}GPT模式。`
         }
     },
     tianliGPTGenerate: async function() {
@@ -92,7 +92,7 @@ var heoGPT = {
                 requestAnimationFrame(i), l = !1
             }), 3e3), r.observe(n)
         })).catch((e => {
-            console.error("获取信息失败:", e), n.innerHTML = "获取信息失败", n.style.display = "block", heoGPTIsRunning = !1;
+            console.error("獲取資訊失敗:", e), n.innerHTML = "獲取資訊失敗", n.style.display = "block", heoGPTIsRunning = !1;
             document.querySelector(".ai-tag").classList.remove("loadingAI"), r.disconnect()
         }))
     },
@@ -112,7 +112,7 @@ var heoGPT = {
     },
     createSuggestionItemWithAction: function(e, o) {
         const n = document.querySelector(".ai-suggestions");
-        if (!n) return void console.error("无法找到具有class为ai-suggestions的元素");
+        if (!n) return void console.error("無法找到具有class為ai-suggestions的元素");
         const t = document.createElement("div");
         t.classList.add("ai-suggestions-item"), t.textContent = e, t.addEventListener("click", (() => {
             o()
@@ -120,17 +120,17 @@ var heoGPT = {
     },
     cleanSuggestions: function() {
         const e = document.querySelector(".ai-suggestions");
-        e ? e.innerHTML = "" : console.error("无法找到具有class为ai-suggestions的元素")
+        e ? e.innerHTML = "" : console.error("無法找到具有class為ai-suggestions的元素")
     },
     createSuggestions: function() {
         function e() {
             window.open("/p/ec57d8b2.html", "_blank")
         }
-        aiTalkMode && (heoGPT.cleanSuggestions(), "HeoGPT" === heoGPTModel ? (heoGPT.createSuggestionItemWithAction(`谁是${siteTitle}？`, (() => {
-            heoGPT.aiShowAnimation(Promise.resolve("张洪Heo 是一位设计师，他的主要职业是图形设计师、UI/视觉设计师和产品设计师。他的GitHub主页上有一些他的作品。此外，他还开发了一个名为“敲木鱼”的应用程序，该应用程序旨在通过音效和文字显示来提高用户体验。如果您想了解更多关于张洪Heo的信息，可以访问他的个人网站或博客。"), !0)
-        })), heoGPT.createSuggestionItemWithAction("这篇文章讲了什么？", (() => {
+        aiTalkMode && (heoGPT.cleanSuggestions(), "HeoGPT" === heoGPTModel ? (heoGPT.createSuggestionItemWithAction(`誰是${siteTitle}？`, (() => {
+            heoGPT.aiShowAnimation(Promise.resolve("張洪Heo 是一位設計師，他的主要職業是圖形設計師、UI/視覺設計師和產品設計師。他的GitHub首頁上有一些他的作品。此外，他還開發了一個名為“敲木魚”的應用程式，該應用程式旨在透過音效和文字顯示來提高用戶體驗。如果您想了解更多關於張洪Heo的資訊，可以訪問他的個人網站或部落格。"), !0)
+        })), heoGPT.createSuggestionItemWithAction("這篇文章講了什麼？", (() => {
             heoGPT.aiShowAnimation(Promise.resolve(heo_aiPostExplanation), !0)
-        })), heoGPT.createSuggestionItemWithAction("带我去看看其他文章", (() => toRandomPost())), heoGPT.createSuggestionItemWithAction("怎么才能给我的网站安装一个AI摘要？", (() => e()))) : "TianliGPT" === heoGPTModel && (heoGPT.createSuggestionItemWithAction("怎么才能给我的网站安装一个AI摘要？", (() => e())), heoGPT.createSuggestionItemWithAction("带我去Tianli的博客", (() => {
+        })), heoGPT.createSuggestionItemWithAction("帶我去看看其他文章", (() => toRandomPost())), heoGPT.createSuggestionItemWithAction("怎麼才能給我的網站安裝一個AI摘要？", (() => e()))) : "TianliGPT" === heoGPTModel && (heoGPT.createSuggestionItemWithAction("怎麼才能給我的網站安裝一個AI摘要？", (() => e())), heoGPT.createSuggestionItemWithAction("帶我去Tianli的部落格", (() => {
             window.open("https://tianli-blog.club/", "_blank")
         }))))
     }
@@ -151,9 +151,9 @@ function addAIToggleListener() {
 }
 
 function heoGPTTalkMode() {
-    document.querySelectorAll(".ai-suggestions") && heoGPT.aiShowAnimation(Promise.resolve(`我是${siteTitle}的摘要生成助理${gptName}GPT，是一个基于GPT-4与${gptName}Correction的混合语言模型。我在这里只负责摘要的预生成和显示，你无法与我直接沟通，但我可以回答一些预设的问题。`), !0)
+    document.querySelectorAll(".ai-suggestions") && heoGPT.aiShowAnimation(Promise.resolve(`我是${siteTitle}的摘要生成助理${gptName}GPT，是一個基於GPT-4與${gptName}Correction的混合語言模型。我在這裡只負責摘要的預生成和顯示，你無法與我直接溝通，但我可以回答一些預設的問題。`), !0)
 }
 
 function tianliGPTTalkMode() {
-    document.querySelectorAll(".ai-suggestions") && heoGPT.aiShowAnimation(Promise.resolve("你好，我是摘要生成助理TianliGPT，TianliGPT在访客访问时进行摘要的撰写。我在这里只负责摘要的实时生成和显示，你无法与我直接沟通，如果你也需要一个这样的AI摘要接口，可以在下方查看部署教程。"), !0)
+    document.querySelectorAll(".ai-suggestions") && heoGPT.aiShowAnimation(Promise.resolve("你好，我是摘要生成助理TianliGPT，TianliGPT在訪客訪問時進行摘要的撰寫。我在這裡只負責摘要的即時生成和顯示，你無法與我直接溝通，如果你也需要一個這樣的AI摘要介面，可以在下方查看部署教學。"), !0)
 }

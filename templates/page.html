@@ -12,7 +12,7 @@
 
     <div class="page" id="body-wrap">
 
-        <!-- 头部导航栏 -->
+        <!-- 頭部導航欄 -->
         <header class="not-top-img" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = ${singlePage.spec.title})}"></nav>
         </header>
@@ -22,7 +22,7 @@
                       th:class="${ theme.config.code.enable_line || pluginFinder.available('PluginPrismJS') ? 'line-numbers' : ''}"
                       th:utext="${singlePage.content.content}"></div>
                 <hr>
-                <!--/* 评论组件 */-->
+                <!--/* 評論組件 */-->
                 <th:block
                         th:replace="~{modules/comment :: comment(group = 'content.halo.run',
                   kind = 'SinglePage',
@@ -31,7 +31,7 @@
 
             </div>
 
-            <!-- 侧栏 -->
+            <!-- 側欄 -->
             <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.widgetss.pageWidgets})}"></div>
 
         </main>

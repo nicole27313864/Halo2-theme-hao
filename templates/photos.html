@@ -11,7 +11,7 @@
 <th:block th:fragment="content">
 
     <div class="page" id="body-wrap">
-        <!-- 头部导航栏 -->
+        <!-- 頭部導航欄 -->
         <header class="not-top-img" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = ${_title})}"></nav>
         </header>
@@ -26,7 +26,7 @@
                             <div class="author-content author-content-item essayPage single"
                                  th:style="'background:url('+${background}+') left 28% / cover no-repeat !important;'">
                                 <div class="card-content">
-                                    <div class="author-content-item-tips">相册集</div>
+                                    <div class="author-content-item-tips">相冊集</div>
                                     <span class="author-content-item-title" th:text="${group.spec.displayName}"></span>
                                     <div class="content-bottom">
                                         <div class="tips" th:text="${description}"></div>
@@ -47,7 +47,7 @@
                         <div class="author-content author-content-item essayPage single"
                              th:style="'background:url('+${background}+') left 28% / cover no-repeat !important;'">
                             <div class="card-content">
-                                <div class="author-content-item-tips">相册集</div>
+                                <div class="author-content-item-tips">相冊集</div>
                                 <span class="author-content-item-title">全部</span>
                                 <div class="content-bottom">
                                     <div class="tips"></div>
@@ -77,7 +77,7 @@
                             </div>
                         </section>
                     </div>
-                    <!-- 分页 -->
+                    <!-- 分頁 -->
                     <th:block th:with="param_group = ${not #strings.isEmpty(param.group) ? '?group='+param.group : ''}">
                         <div th:replace="~{modules/widgets/page :: page('/photos',${photos},false,${param_group})}"></div>
                     </th:block>
@@ -107,7 +107,7 @@
                             </div>
                         </section>
                     </div>
-                    <!-- 分页 -->
+                    <!-- 分頁 -->
                     <th:block th:with="param_group = ${not #strings.isEmpty(param.group) ? '?group='+param.group : ''}">
                         <div th:replace="~{modules/widgets/page :: page('/photos',${photos},false,${param_group})}"></div>
                     </th:block>
@@ -240,7 +240,7 @@
                         user-drag: none
                     }
                 </style>
-                <!--/* 评论组件 */-->
+                <!--/* 評論組件 */-->
                 <th:block th:replace="~{modules/comment :: comment(group = 'content.halo.run',
                   kind = 'SinglePage',
                   name = 'photos',
@@ -250,7 +250,7 @@
         </main>
         <!-- 底部 -->
         <footer th:replace="~{modules/footer}"/>
-        <!-- 卡片顶部气泡效果 -->
+        <!-- 卡片頂部氣泡效果 -->
         <script th:if="${theme.config.other.bubbleEnable}" async data-pjax
                 th:src="${assets_link + '/libs/canvas/bubble.js'}"></script>
     </div>

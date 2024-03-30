@@ -1,4 +1,4 @@
-<!-- 标签 -->
+<!-- 標籤 -->
 <th:block
           th:with="tags = ${tagFinder.listAll()}, tagQuantity = ${#conversions.convert(theme.config.sidebar.tagQuantity, 'java.lang.Integer')}">
 
@@ -8,7 +8,7 @@
            th:href="@{${tag.status.permalink}}"
            th:if="${tagQuantity >= 0 && iterStat.index < tagQuantity || tagQuantity < 0}"
            th:title="${tag.spec.displayName}">
-            <!-- 角标 -->
+            <!-- 角標 -->
             [[${tag.spec.displayName}]]<sup th:text="${tag.status.visiblePostCount}"></sup>
         </a>
     </div>

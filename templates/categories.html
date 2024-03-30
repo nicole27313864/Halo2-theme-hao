@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'category',title = ${'分类' + ' | ' + site.title}, head = ~{::head})}">
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'category',title = ${'分類' + ' | ' + site.title}, head = ~{::head})}">
 <th:block th:fragment="head">
-    <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = '分类目录',
+    <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = '分類目錄',
                 _permalink = '/categories',
                 _cover = ${theme.config.other.opengraph.image},
                 _excerpt = ${site.seo.description},
@@ -12,14 +12,14 @@
 
     <div class="page" id="body-wrap">
         <header class="not-top-img" id="page-header">
-            <nav th:replace="~{modules/nav :: nav(title = '分类')}"></nav>
+            <nav th:replace="~{modules/nav :: nav(title = '分類')}"></nav>
         </header>
         <main class="layout hide-aside" id="content-inner">
 
             <div id="page">
-                <h1 class="page-title" style="display: inline;">分类</h1>
+                <h1 class="page-title" style="display: inline;">分類</h1>
                 <div th:if="${#strings.equals(theme.config.categories.use, 'default')}" class="category-lists">
-                    <div class="category-title is-center">分类 - <span class="category-amount">11</span></div>
+                    <div class="category-title is-center">分類 - <span class="category-amount">11</span></div>
                     <div class="tag-cloud-list is-center">
                         <a style="font-size: 1em;" th:each="categoryItem : ${categoryFinder.listAll()}"
                            th:href="@{${categoryItem.status.permalink}}" th:id="${categoryItem.spec.displayName}">

@@ -12,7 +12,7 @@
 
     <div class="page" id="body-wrap">
 
-        <!-- 头部导航栏 -->
+        <!-- 頭部導航欄 -->
         <header class="not-top-img" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = ${singlePage.spec.title})}"></nav>
         </header>
@@ -20,7 +20,7 @@
             <div id="page">
                 <div id="album" th:if="${#strings.equals(theme.config.photos.photosStyle, 'default')}">
                     <div th:replace="~{macro/author-content :: author-content(background = ${singlePage.spec.cover},
-                        smallTitle = '相册集',
+                        smallTitle = '相冊集',
                         bigTitle = ${singlePage.spec.title},
                         detail = ${singlePage.spec.excerpt.raw},
                         buttonUrl = '',
@@ -173,7 +173,7 @@
                         }
                     }
                 </style>
-                <!--/* 评论组件 */-->
+                <!--/* 評論組件 */-->
                 <th:block th:replace="~{modules/comment :: comment(group = 'content.halo.run',
                   kind = 'SinglePage',
                   name = ${singlePage.metadata.name},
@@ -183,7 +183,7 @@
         </main>
         <!-- 底部 -->
         <footer th:replace="~{modules/footer}"/>
-        <!-- 卡片顶部气泡效果 -->
+        <!-- 卡片頂部氣泡效果 -->
         <script th:if="${theme.config.other.bubbleEnable}" async data-pjax
                 th:src="${assets_link + '/libs/canvas/bubble.js'}"></script>
     </div>

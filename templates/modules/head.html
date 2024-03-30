@@ -1,4 +1,4 @@
-<!-- 公共的 head 部分，可以定义部分 links,scripts,styles -->
+<!-- 公共的 head 部分，可以定義部分 links,scripts,styles -->
 <th:block th:fragment="head(htmlType)">
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
@@ -26,7 +26,7 @@
         }
     </style>
 
-    <!-- swiper 在瞬间滚动时会使用 -->
+    <!-- swiper 在瞬間滾動時會使用 -->
     <link th:if="${theme.config.top.moment}" rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.css"/>
 
     <!-- 右下角通知 -->
@@ -36,12 +36,12 @@
           rel="stylesheet"
     />
 
-    <!-- 代码块自动识别语言 -->
+    <!-- 代碼塊自動識別語言 -->
     <th:block th:replace="~{modules/common/code}"/>
-    <!--  代码块-->
+    <!--  代碼塊-->
     <th:block th:replace="~{macro/prism-code}"/>
 
-    <!-- 页脚内容-样式一 -->
+    <!-- 頁尾內容-樣式一 -->
     <th:block th:replace="~{modules/common/footer-style-one}"/>
 
     <script>
@@ -154,19 +154,19 @@
         })(window)
     </script>
 
-    <!-- 动态加载条 -->
+    <!-- 動態載入條 -->
     <script data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"
             th:src="${assets_link + '/libs/pace/pace.min.js'}"
             th:if="${theme.config.other.loadingBoxs.loadProgressBar}">
     </script>
 
-    <!-- 复制 https://githubfast.com/zenorocha/clipboard.js -->
+    <!-- 複製 https://githubfast.com/zenorocha/clipboard.js -->
     <script th:src="${assets_link + '/libs/clipboard/clipboard.min.js'}"></script>
 
-    <!-- 关于统计-->
+    <!-- 關於統計-->
     <script th:if="${#strings.contains(theme.config.about.widgetList,'statistics-map')}" th:src="${assets_link + '/libs/countup/countup.js'}"></script>
 
-    <!-- 小板报 -->
+    <!-- 小板報 -->
     <th:block th:if="${not #strings.isEmpty(theme.config.sidebar.welcome.key)}">
         <script defer th:if="${#strings.contains(theme.config.sidebar.widgetss.indexWidgets,'welcome') ||
             #strings.contains(theme.config.sidebar.widgetss.postWidgets,'welcome') ||
@@ -175,7 +175,7 @@
                 th:src="${assets_link + '/libs/welcome/welcome.js'}"></script>
     </th:block>
 
-    <!-- icon图标 -->
+    <!-- icon圖示 -->
     <link rel="stylesheet" th:href="${assets_link + '/icon/iconfont.css' + theme_version}">
 
     <th:block th:replace="~{modules/variables/site-config}" />

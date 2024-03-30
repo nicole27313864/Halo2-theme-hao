@@ -12,14 +12,14 @@
 
     <div class="page" id="body-wrap">
 
-        <!-- 头部导航栏 -->
+        <!-- 頭部導航欄 -->
         <header class="not-top-img" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = ${singlePage.spec.title})}"></nav>
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
                 <div th:replace="~{macro/author-content :: author-content(background = ${singlePage.spec.cover},
-                        smallTitle = '评论',
+                        smallTitle = '評論',
                         bigTitle = ${singlePage.spec.title},
                         detail = ${singlePage.spec.excerpt.raw},
                         buttonUrl = '',
@@ -29,7 +29,7 @@
                               th:each="comment,iterStat : ${commentFinder.list(null, 1, 100)}" th:with="page = ${comment.spec.subjectRef.kind == 'Post' ? postFinder.getByName(comment.spec.subjectRef.name) :
                         comment.spec.subjectRef.kind == 'SinglePage' && not #strings.contains('photos,links,moments', comment.spec.subjectRef.name) ? singlePageFinder.getByName(comment.spec.subjectRef.name) : null},
                         url = ${page == null? '/' : page.status.permalink + '#comment-' + comment.metadata.name},
-                        article = ${page == null? '该文章/页面不存在' : page.spec.title}">
+                        article = ${page == null? '該文章/頁面不存在' : page.spec.title}">
                         <div class="comment-card" th:title="${comment.spec.content}"
                              th:onclick="pjax.loadUrl([[${url}]])">
                             <div class="comment-info">
@@ -53,7 +53,7 @@
                     <script data-pjax th:inline="javascript">
                         var postsData = [[${ postFinder.listAll() }]];
                         var pageData = [[${ singlePageFinder.list(1, 50) }]];
-                        var articles = [{ path: '/links', title: '友链' }, { path: '/bangumis', title: '追番' }, { path: '/equipment', title: '我的装备' }, { path: '/moments', title: '瞬间' }, { path: '/photos', title: '图库' }];
+                        var articles = [{ path: '/links', title: '友鏈' }, { path: '/bangumis', title: '追番' }, { path: '/equipment', title: '我的裝備' }, { path: '/moments', title: '瞬間' }, { path: '/photos', title: '圖庫' }];
 
                         if (postsData.length > 0) {
                             postsData.map((item) => {
@@ -170,7 +170,7 @@
                         function getTitle(url) {
                             let a = articles.find(a => a.path == url)
                             if (a) return a.title
-                            return '该文章/页面不存在'
+                            return '該文章/頁面不存在'
                         }
 
                         function renderer(data) {
@@ -182,7 +182,7 @@
                                     <div class="comment-info no-lightbox">
                                         <img src="${item.avatar}" alt='${item.nick}'/>
                                         <div class="comment-information">
-                                                <span class="comment-user">${item.nick} ${item.barrageBlogger ? '<span class="isBlogger">博主</span>' : ''}</span>
+                                                <span class="comment-user">${item.nick} ${item.barrageBlogger ? '<span class="isBlogger">部落客</span>' : ''}</span>
                                                 <span class="comment-time">${c}</span>
                                         </div>
                                     </div>
@@ -195,9 +195,9 @@
                         function changeContents(content) {
                             if (content === '') return content
 
-                            content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
-                            content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
-                            content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+                            content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[圖片]') // replace image link
+                            content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[連結]') // replace url
+                            content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代碼]') // replace code
                             content = content.replace(/<[^>]+>/g, "") // remove html tag
 
                             if (content.length > 150) {
@@ -354,7 +354,7 @@
         </main>
         <!-- 底部 -->
         <footer th:replace="~{modules/footer}"/>
-        <!-- 卡片顶部气泡效果 -->
+        <!-- 卡片頂部氣泡效果 -->
         <script th:if="${theme.config.other.bubbleEnable}" async data-pjax
                 th:src="${assets_link + '/libs/canvas/bubble.js'}"></script>
     </div>

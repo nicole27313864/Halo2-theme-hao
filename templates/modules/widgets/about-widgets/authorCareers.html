@@ -1,13 +1,13 @@
-<!-- 技能&职业生涯 -->
+<!-- 技能&職業生涯 -->
 <div class="author-content">
 
     <div class="author-content-item skills">
         <div class="card-content">
             <div class="author-content-item-tips">技能</div>
-            <span class="author-content-item-title">开启创造力</span>
+            <span class="author-content-item-title">開啟創造力</span>
             <div class="skills-style-group">
                 <div class="tags-group-all">
-                    <!--  banners 使用默认值-->
+                    <!--  banners 使用預設值-->
                     <div class="tags-group-wrapper"
                          th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'default')}">
                         <div class="tags-group-icon-pair">
@@ -144,7 +144,7 @@
                         </div>
                     </div>
 
-                    <!--  banners 使用默认值-->
+                    <!--  banners 使用預設值-->
                     <div class="tags-group-wrapper"
                          th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'techStack')}"
                          th:with="techs = ${theme.config.top.BannerLeft.techStack}">
@@ -168,7 +168,7 @@
                     </div>
                 </div>
 
-                <!--  banners 使用默认值-->
+                <!--  banners 使用預設值-->
                 <div class="skills-list"
                      th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'default')}"
                      th:with="techs = ${theme.config.top.BannerLeft.techStack}">
@@ -298,7 +298,7 @@
         <div class="card-content">
             <div class="author-content-item-tips">生涯</div>
             <span class="author-content-item-title"
-                  th:text="${theme.config.about.authorCareers.authorCareersTitle}">无限进步</span>
+                  th:text="${theme.config.about.authorCareers.authorCareersTitle}">無限進步</span>
             <div class="careers-group"
                  th:if="${not #lists.isEmpty(theme.config.about.authorCareers.authorCareersTags)}"
                  th:with="careersTags = ${theme.config.about.authorCareers.authorCareersTags}">

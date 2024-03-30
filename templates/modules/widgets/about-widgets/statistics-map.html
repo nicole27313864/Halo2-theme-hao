@@ -1,14 +1,14 @@
-<!-- 数据统计&作者相关信息 -->
+<!-- 數據統計&作者相關資訊 -->
 <div class="author-content">
     <div class="about-statistic author-content-item"
          style="background: url(https://bu.dusays.com/2023/03/12/640dc8c72f623.webp);">
         <div class="card-content">
-            <div class="author-content-item-tips">数据</div>
-            <span class="author-content-item-title">访问统计</span>
+            <div class="author-content-item-tips">數據</div>
+            <span class="author-content-item-title">訪問統計</span>
             <div id="statistic"></div>
-            <div class="post-tips">统计信息来自 <a href="https://invite.51.la/1NzKqTeb?target=V6"
+            <div class="post-tips">統計資訊來自 <a href="https://invite.51.la/1NzKqTeb?target=V6"
                                                    rel="noopener nofollow"
-                                                   target="_blank">51la网站统计</a></div>
+                                                   target="_blank">51la網站統計</a></div>
             <div class="banner-button-group">
                 <a class="banner-button" onclick="pjax.loadUrl('/archives')" data-pjax-state="">
                     <i class="haofont hao-icon-circle-arrow-up-right-1"></i>
@@ -21,7 +21,7 @@
     
     <div class="author-content-item-group column mapAndInfo">
         <div class="author-content-item map single">
-            <span class="map-title">我现在住在
+            <span class="map-title">我現在住在
                 <b>[[${theme.config.about.map.StrengthenTitle}]]</b>
             </span>
         </div>
@@ -30,24 +30,24 @@
              th:with="texts = ${theme.config.about.map.authorInfo}">
             <div th:if="${theme.config.about.map.authorInfo.size()}>'0'">
                 <span class="selfInfo-title"
-                      th:text="${texts[0].authorInfoTitle}">生于</span><span
+                      th:text="${texts[0].authorInfoTitle}">生於</span><span
                     class="selfInfo-content"
                     id="selfInfo-content-year" th:style="'color:' + ${texts[0].authorInfoColor}"
                     th:text="${texts[0].authorInfoContent}">2000</span>
             </div>
             <div th:if="${theme.config.about.map.authorInfo.size()}>'1'">
                 <span class="selfInfo-title"
-                      th:text="${texts[1].authorInfoTitle}">太原理工大学</span><span
+                      th:text="${texts[1].authorInfoTitle}">太原理工大學</span><span
                     class="selfInfo-content"
                     th:style="'color:' + ${texts[1].authorInfoColor}"
-                    th:text="${texts[1].authorInfoContent}">计算机科学</span>
+                    th:text="${texts[1].authorInfoContent}">電腦科學</span>
             </div>
             <div th:if="${theme.config.about.map.authorInfo.size()}>'2'">
                 <span class="selfInfo-title"
-                      th:text="${texts[2].authorInfoTitle}">现在职业</span><span
+                      th:text="${texts[2].authorInfoTitle}">現在職業</span><span
                     class="selfInfo-content"
                     th:style="'color:' + ${texts[2].authorInfoColor}"
-                    th:text="${texts[2].authorInfoContent}">BI工程师</span>
+                    th:text="${texts[2].authorInfoContent}">BI工程師</span>
             </div>
         </div>
     </div>
@@ -109,14 +109,14 @@
             }
         }
     </style>
-    <!-- 关于统计-->
+    <!-- 關於統計-->
     <script defer>
-        // 链接替换即可，不需要后面的参数
+        // 連結替換即可，不需要後面的參數
         function initAboutPage() {
             fetch("https://v6-widget.51.la/v6/[[${theme.config.about.LingQueMonitorID}]]/quote.js")
                     .then(res => res.text())
                     .then(data => {
-                        let title = ["最近活跃", "今日人数", "今日访问", "昨日人数", "昨日访问", "本月访问", "总访问量"];
+                        let title = ["最近活躍", "今日人數", "今日訪問", "昨日人數", "昨日訪問", "本月訪問", "總訪問量"];
                         // let num = data.match(/(?<=<\/span><span>).*?(?=<\/span><\/p>)/g)
                         let num = data.match(/(<\/span><span>).*?(\/span><\/p>)/g);
                         
@@ -128,7 +128,7 @@
                         
                         let statisticEl = document.getElementById("statistic");
                         
-                        // 自定义不显示哪个或者显示哪个，如下为不显示 最近活跃访客 和 总访问量
+                        // 自訂不顯示哪個或者顯示哪個，如下為不顯示 最近活躍訪客 和 總訪問量
                         let statistic = [];
                         for (let i = 0; i < num.length; i++) {
                             if (!statisticEl) return;
@@ -163,7 +163,7 @@
                                                 statistic[i - 1].start();
                                             });
                                         }
-                                        observer.disconnect(); // 停止观察元素，因为不再需要触发此回调
+                                        observer.disconnect(); // 停止觀察元素，因為不再需要觸發此回調
                                     }
                                 });
                             };

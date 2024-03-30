@@ -21,22 +21,22 @@
             <div id="post-info">
                 <div id="post-firstinfo">
                     <div class="meta-firstline">
-                        <!-- 这里要跳转到版权页 -->
+                        <!-- 這裡要跳轉到版權頁 -->
                         <th:block th:with="copyrightUrl =${#annotations.get(post, 'copyrightUrl')}"
                                   th:if="${not #strings.isEmpty(#annotations.get(post, 'copyrightEnable')) ?
                                           #annotations.get(post, 'copyrightEnable')  == 'true' : theme.config.post.copyrights.enable}">
                             <a class="post-meta-original"
-                               title="该文章为原创文章，注意版权协议"
+                               title="該文章為原創文章，注意版權協議"
                                th:if="${#strings.equals(#annotations.getOrDefault(post, 'copyrightType','original'),'original')}"
                                th:href="@{${not #strings.isEmpty(copyrightUrl) ? copyrightUrl :
                                 not #strings.isEmpty(theme.config.post.copyrights.originalUrl) ? theme.config.post.copyrights.originalUrl : '#'}}"
-                            >原创</a>
+                            >原創</a>
                             <a class="post-meta-original"
-                               title="该文章为转载文章，版权归原作者所有"
+                               title="該文章為轉載文章，版權歸原作者所有"
                                th:if="${#strings.equals(#annotations.getOrDefault(post, 'copyrightType','original'),'reprint')}"
                                th:href="@{${not #strings.isEmpty(copyrightUrl) ? copyrightUrl :
                                 not #strings.isEmpty(theme.config.post.copyrights.originalUrl) ? theme.config.post.copyrights.reprintUrl : '#'}}"
-                            >转载</a>
+                            >轉載</a>
                         </th:block>
                         <span class="post-meta-categories" th:each="category : ${post.categories}"
                               th:if="${not #lists.isEmpty(post.categories)}">
@@ -63,13 +63,13 @@
                         </span>
                         <span class="post-meta-wordcount"
                               th:with="wordCount = ${#strings.length(post.content.content)}">
-                            <i class="haofont hao-icon-file-word post-meta-icon" title="字数"></i>
-                            <span class="post-meta-label">字数:</span>
+                            <i class="haofont hao-icon-file-word post-meta-icon" title="字數"></i>
+                            <span class="post-meta-label">字數:</span>
                             <span class="word-count" th:text="${{wordCount}}"></span>
                             <span class="post-meta-separator"></span>
-                            <i class="haofont hao-icon-clock post-meta-icon" title="阅读耗时"></i>
-                            <span class="post-meta-label">阅读耗时:</span>
-                            <span>[[${wordCount / 400}]] 分钟</span>
+                            <i class="haofont hao-icon-clock post-meta-icon" title="閱讀耗時"></i>
+                            <span class="post-meta-label">閱讀耗時:</span>
+                            <span>[[${wordCount / 400}]] 分鐘</span>
                         </span>
                         <span class="post-meta-date">
                             <i class="haofont hao-icon-calendar-days post-meta-icon"></i>
@@ -79,34 +79,34 @@
                             </time>
                         </span>
                         <span class="post-meta-date" th:if="${theme.config.post.update_time}">
-                            <i class="haofont hao-icon-pencil post-meta-icon" title="最后更新时间"></i>
+                            <i class="haofont hao-icon-pencil post-meta-icon" title="最後更新時間"></i>
                             <time th:attr="datetime=${#dates.format(post.status.lastModifyTime, 'yyyy-MM-dd')}"
                                   th:text="${#dates.format(post.status.lastModifyTime,'yyyy/MM/dd')}"
                                   th:title="${#dates.format(post.status.lastModifyTime,'yyyy-MM-dd HH:mm:ss')}">
                             </time>
                         </span>
                         <span th:with="syncStatus=${#strings.isEmpty(#annotations.get(post, 'sync_status')) ? '未同步': #annotations.get(post, 'sync_status')}"
-                              class="post-meta-wechat" th:title=" ${pluginFinder.available('plugin-platforms-sync') &&  (syncStatus == '同步更新文章成功' || syncStatus == '同步上传文章成功') ? '该文章已在公众号中更新' : '该文章在博客首发'}">
-                            <th:block th:unless="${pluginFinder.available('plugin-platforms-sync') && (syncStatus == '同步更新文章成功' || syncStatus == '同步上传文章成功')}">
-                                <i class="haofont hao-icon-rss post-meta-icon"></i>博客独享
+                              class="post-meta-wechat" th:title=" ${pluginFinder.available('plugin-platforms-sync') &&  (syncStatus == '同步更新文章成功' || syncStatus == '同步上傳文章成功') ? '該文章已在公眾號中更新' : '該文章在部落格首發'}">
+                            <th:block th:unless="${pluginFinder.available('plugin-platforms-sync') && (syncStatus == '同步更新文章成功' || syncStatus == '同步上傳文章成功')}">
+                                <i class="haofont hao-icon-rss post-meta-icon"></i>部落格獨享
                             </th:block>
 
-                            <th:block th:if="${pluginFinder.available('plugin-platforms-sync') && (syncStatus == '同步更新文章成功' || syncStatus == '同步上传文章成功')}">
-                                <i class="haofont hao-icon-weixin1 post-meta-icon"></i>公众号同步
+                            <th:block th:if="${pluginFinder.available('plugin-platforms-sync') && (syncStatus == '同步更新文章成功' || syncStatus == '同步上傳文章成功')}">
+                                <i class="haofont hao-icon-weixin1 post-meta-icon"></i>公眾號同步
                             </th:block>
                         </span>
-                        <a class="post-meta-pv" data-flag-title="热度"
-                           title="热度" >
+                        <a class="post-meta-pv" data-flag-title="熱度"
+                           title="熱度" >
                             <i class="haofont hao-icon-fire post-meta-icon"></i>
-                            <span class="post-meta-label">热度:</span>
+                            <span class="post-meta-label">熱度:</span>
                             <span id="visit" th:text="${post.stats.visit}"></span>
                         </a>
                         <a th:if="${post.spec.allowComment && #strings.contains('Twikoo,Artalk,commentWidget',theme.config.comments.use)}"
-                           class="post-meta-commentcount"  data-flag-title="评论数"
-                           title="评论数"
+                           class="post-meta-commentcount"  data-flag-title="評論數"
+                           title="評論數"
                            href="#post-comment">
                             <i class="haofont hao-icon-chat--fill post-meta-icon" style="font-size: 17px;"></i>
-                            <span class="post-meta-label">评论:</span>
+                            <span class="post-meta-label">評論:</span>
                             <span th:if="${#strings.equals(theme.config.comments.use, 'commentWidget')}"
                                   id="comment-count" th:text="${post.stats.comment}">
                                 <i class="haofont hao-icon-spinner fa-spin"></i>
@@ -120,11 +120,11 @@
                                 <i class="haofont hao-icon-spinner fa-spin"></i>
                             </span>
                         </a>
-                        <a class="post-meta-editor" sec:authorize="isAuthenticated()" data-flag-title="编辑文章"
-                           title="编辑文章"
+                        <a class="post-meta-editor" sec:authorize="isAuthenticated()" data-flag-title="編輯文章"
+                           title="編輯文章"
                            th:attr="onclick='javascript:window.open(\''+ '/console/posts/editor?name='+${post.metadata.name}+'&returnToView=true\''+ ',' +'\'_self'+'\')'">
                             <i style="margin-top: 2px;" class="haofont hao-icon-bianji post-meta-icon"></i>
-                            <span>编辑</span>
+                            <span>編輯</span>
                         </a>
                     </div>
 
@@ -156,28 +156,28 @@
                       #annotations.get(post, 'ai') == 'true' : theme.config.post.aiDescription.aiDescriptionEnable}">
                     <div class="ai-title"><i class="haofont hao-icon-bilibili"></i>
                         <div class="ai-title-text">AI-摘要</div>
-                        <div th:if="${theme.config.post.aiDescription.switchBtn}" id="ai-Toggle">切换</div>
+                        <div th:if="${theme.config.post.aiDescription.switchBtn}" id="ai-Toggle">切換</div>
                         <i class="haofont hao-icon-arrow-rotate-right"></i>
                         <div th:if="${#strings.equals(theme.config.post.aiDescription.mode, 'local')}" class="ai-tag" id="ai-tag">[[${theme.config.post.aiDescription.gptName}]] GPT</div>
                         <div th:if="${#strings.equals(theme.config.post.aiDescription.mode, 'tianli')}" class="ai-tag" id="ai-tag">Tianli GPT</div>
                     </div>
                     <div class="ai-explanation" style="display: block;">AI初始化中...</div>
                     <div class="ai-btn-box">
-                        <div class="ai-btn-item">介绍自己</div>
-                        <div class="ai-btn-item">生成本文简介</div>
-                        <div class="ai-btn-item">推荐相关文章</div>
-                        <div class="ai-btn-item">前往主页</div>
-                        <div class="ai-btn-item" id="go-tianli-blog">前往tianli博客</div>
+                        <div class="ai-btn-item">介紹自己</div>
+                        <div class="ai-btn-item">生成本文簡介</div>
+                        <div class="ai-btn-item">推薦相關文章</div>
+                        <div class="ai-btn-item">前往首頁</div>
+                        <div class="ai-btn-item" id="go-tianli-blog">前往tianli部落格</div>
                     </div>
                 </div>
 
-                <!-- 文章内容 -->
+                <!-- 文章內容 -->
                 <article  th:class="'post-content  '+${ theme.config.code.enable_line || pluginFinder.available('PluginPrismJS') ? 'line-numbers' : ''}" id="article-container">
                     <th:block th:if="${theme.config.post.passage_tips.enable}"
                               th:with="days=${(new java.util.Date().getTime()-post.status.lastModifyTime.toEpochMilli())/86400000}">
                         <div class="note simple  warning"  th:if="${days > #conversions.convert(theme.config.post.passage_tips.day, 'java.lang.Integer')}">
                             <p>
-                                <th:block th:text="|本文最后更新于 ${#dates.format(post.status.lastModifyTime,'yyyy-MM-dd')}，|"/><th:block th:utext="${theme.config.post.passage_tips.content}"/>
+                                <th:block th:text="|本文最後更新於 ${#dates.format(post.status.lastModifyTime,'yyyy-MM-dd')}，|"/><th:block th:utext="${theme.config.post.passage_tips.content}"/>
                             </p>
                         </div>
                     </th:block>
@@ -189,7 +189,7 @@
                       #annotations.get(post, 'ai') == 'true' : theme.config.post.aiDescription.aiDescriptionEnable}"
                         th:src="${assets_link + '/libs/gpt/post-ai.js'}"></script>
 
-                <!-- 版权声明 -->
+                <!-- 版權聲明 -->
                 <th:block th:replace="~{modules/post/copyright}"></th:block>
 
                 <nav class="pagination-post needEndHide" id="pagination"
@@ -221,10 +221,10 @@
                         </a>
                     </div>
                 </nav>
-                <!-- 阅读建议 -->
+                <!-- 閱讀建議 -->
                 <th:block th:replace="~{modules/post/relatedPosts}"/>
                 <hr>
-                <!--/* 评论组件 */-->
+                <!--/* 評論組件 */-->
                 <th:block
                         th:replace="~{modules/comment :: comment(group = 'content.halo.run',
                   kind = 'Post',
@@ -233,7 +233,7 @@
 
             </div>
 
-            <!-- 侧栏 -->
+            <!-- 側欄 -->
             <div th:replace="~{modules/aside :: aside(${theme.config.sidebar.widgetss.postWidgets})}"></div>
         </main>
 

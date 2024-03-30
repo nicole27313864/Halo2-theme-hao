@@ -1,19 +1,19 @@
 /*
 Last Modified time : 20220211 15:38 by https://immmmm.com
-已适配 FriendCircle 公共库和主库
+已適配 FriendCircle 公共庫和主庫
 */
 
-//默认数据
+//默認數據
 var fdata = {
     jsonurl: '',
     apiurl: 'https://moments.0206.ink/',
-    apipublicurl: '', //默认公共库
-    initnumber: 20,  //首次加载文章数
-    stepnumber: 20,  //更多加载文章数
+    apipublicurl: '', //默認公共庫
+    initnumber: 20,  //首次載入文章數
+    stepnumber: 20,  //更多載入文章數
     article_sort: 'created', //文章排序 updated or created
     error_img: 'https://sdn.geekzu.org/avatar/57d8260dfb55501c37dde588e7c3852c'
 }
-//可通过 var fdataUser 替换默认值
+//可通過 var fdataUser 替換預設值
 if (typeof (fdataUser) !== "undefined") {
     for (var key in fdataUser) {
         if (fdataUser[key]) {
@@ -23,7 +23,7 @@ if (typeof (fdataUser) !== "undefined") {
 }
 var article_num = '', sortNow = '', UrlNow = '', friends_num = ''
 var container = document.getElementById('cf-container') || document.getElementById('fcircleContainer');
-// 获取本地 排序值、加载apiUrl，实现记忆效果
+// 獲取本地 排序值、載入apiUrl，實現記憶效果
 var localSortNow = localStorage.getItem("sortNow")
 var localUrlNow = localStorage.getItem("urlNow")
 if (localSortNow && localUrlNow) {
@@ -38,12 +38,12 @@ if (localSortNow && localUrlNow) {
     } else {
         UrlNow = fdata.apipublicurl + 'all?'
     }
-    console.log("当前模式：" + UrlNow)
+    console.log("當前模式：" + UrlNow)
     localStorage.setItem("urlNow", UrlNow)
     localStorage.setItem("sortNow", sortNow)
 }
 
-// 打印基本信息
+// 列印基本資訊
 function loadStatistical(sdata) {
     article_num = sdata.article_num
     friends_num = sdata.friends_num
@@ -51,15 +51,15 @@ function loadStatistical(sdata) {
   <div id="cf-state" class="cf-new-add">
     <div class="cf-state-data">
       <div class="cf-data-friends" onclick="openToShow()">
-        <span class="cf-label">订阅</span>
+        <span class="cf-label">訂閱</span>
         <span class="cf-message">${sdata.friends_num}</span>
       </div>
       <div class="cf-data-active" onclick="changeEgg()">
-        <span class="cf-label">活跃</span>
+        <span class="cf-label">活躍</span>
         <span class="cf-message">${sdata.active_num}</span>
       </div>
       <div class="cf-data-article" onclick="clearLocal()">
-        <span class="cf-label">日志</span>
+        <span class="cf-label">日誌</span>
         <span class="cf-message">${sdata.article_num}</span>
       </div>
     </div>
@@ -77,7 +77,7 @@ function loadStatistical(sdata) {
     }
 }
 
-// 打印文章内容 cf-article
+// 列印文章內容 cf-article
 function loadArticleItem(datalist, start, end) {
     var articleItem = '';
     var articleNum = article_num;
@@ -96,22 +96,22 @@ function loadArticleItem(datalist, start, end) {
           <a onclick="openMeShow(event)" data-link="${item.link}" class="" target="_blank" rel="noopener nofollow" href="javascript:;"><img class="cf-img-avatar avatar" src= "${item.avatar}"  alt="avatar" onerror="this.src='${fdata.error_img}'; this.onerror = null;"><span class="cf-article-author">${item.author}</span></a>
           <span class="cf-article-time">
             <span class="cf-time-created" style="${sortNow == 'created' ? '' : 'display:none'}">${item.created}</span>
-            <span class="cf-time-updated" style="${sortNow == 'updated' ? '' : 'display:none'}"><i class="fas fa-history">更新于</i>${item.updated}</span>
+            <span class="cf-time-updated" style="${sortNow == 'updated' ? '' : 'display:none'}"><i class="fas fa-history">更新於</i>${item.updated}</span>
           </span>
         </div>
       </div>
       `;
         }
         container.insertAdjacentHTML('beforeend', articleItem);
-        // 预载下一页文章
+        // 預載下一頁文章
         fetchNextArticle()
     } else {
-        // 文章加载到底
-        document.getElementById('cf-more').outerHTML = `<div id="cf-more" class="cf-new-add" onclick="loadNoArticle()"><small>一切皆有尽头！</small></div>`
+        // 文章載入到底
+        document.getElementById('cf-more').outerHTML = `<div id="cf-more" class="cf-new-add" onclick="loadNoArticle()"><small>一切皆有盡頭！</small></div>`
     }
 }
 
-// 打印个人卡片 cf-overshow
+// 列印個人卡片 cf-overshow
 function loadFcircleShow(userinfo, articledata) {
     var showHtml = `
       <div class="cf-overshow">
@@ -132,7 +132,7 @@ function loadFcircleShow(userinfo, articledata) {
     document.getElementById('cf-overshow').className = 'cf-show-now';
 }
 
-// 预载下一页文章，存为本地数据 nextArticle
+// 預載下一頁文章，存為本地數據 nextArticle
 function fetchNextArticle() {
     var start = document.getElementsByClassName('cf-article').length
     var end = start + fdata.stepnumber
@@ -148,15 +148,15 @@ function fetchNextArticle() {
             .then(res => res.json())
             .then(json => {
                 var nextArticle = eval(json.article_data);
-                console.log("已预载" + "?rule=" + sortNow + "&start=" + start + "&end=" + end)
+                console.log("已預載" + "?rule=" + sortNow + "&start=" + start + "&end=" + end)
                 localStorage.setItem("nextArticle", JSON.stringify(nextArticle))
             })
     } else if (start = articleNum) {
-        document.getElementById('cf-more').outerHTML = `<div id="cf-more" class="cf-new-add" onclick="loadNoArticle()"><small>一切皆有尽头！</small></div>`
+        document.getElementById('cf-more').outerHTML = `<div id="cf-more" class="cf-new-add" onclick="loadNoArticle()"><small>一切皆有盡頭！</small></div>`
     }
 }
 
-// 显示下一页文章，从本地缓存 nextArticle 中获取
+// 顯示下一頁文章，從本地快取 nextArticle 中獲取
 function loadNextArticle() {
     var nextArticle = JSON.parse(localStorage.getItem("nextArticle"));
     var articleItem = ""
@@ -170,7 +170,7 @@ function loadNextArticle() {
           <a onclick="openMeShow(event)" data-link="${item.link}" class="" target="_blank" rel="noopener nofollow" href="javascript:;"><img class="cf-img-avatar avatar" src= "https://bu.dusays.com/2023/03/03/6401a7902b8de.png" data-lazy-src="${item.avatar}" alt="avatar" onerror="this.src='${fdata.error_img}'; this.onerror = null;"><span class="cf-article-author">${item.author}</span></a>
           <span class="cf-article-time">
             <span class="cf-time-created" style="${sortNow == 'created' ? '' : 'display:none'}">${item.created}</span>
-            <span class="cf-time-updated" style="${sortNow == 'updated' ? '' : 'display:none'}"><i class="fas fa-history">更新于</i>${item.updated}</span>
+            <span class="cf-time-updated" style="${sortNow == 'updated' ? '' : 'display:none'}"><i class="fas fa-history">更新於</i>${item.updated}</span>
           </span>
         </div>
       </div>
@@ -178,11 +178,11 @@ function loadNextArticle() {
     }
     container.insertAdjacentHTML('beforeend', articleItem);
 
-    // 同时预载下一页文章
+    // 同時預載下一頁文章
     fetchNextArticle()
 }
 
-// 没有更多文章
+// 沒有更多文章
 function loadNoArticle() {
     var articleSortData = sortNow + "ArticleData"
     localStorage.removeItem(articleSortData)
@@ -192,7 +192,7 @@ function loadNoArticle() {
     window.scrollTo(0, document.getElementsByClassName('cf-state').offsetTop)
 }
 
-// 清空本地数据
+// 清空本地數據
 function clearLocal() {
     localStorage.removeItem("updatedArticleData")
     localStorage.removeItem("createdArticleData")
@@ -213,18 +213,18 @@ function checkVersion() {
             var nowStatus = json.status, nowVersion = json.current_version, newVersion = json.latest_version
             var versionID = document.getElementById('cf-version-up')
             if (nowStatus == 0) {
-                versionID.innerHTML = "当前版本：v" + nowVersion
+                versionID.innerHTML = "當前版本：v" + nowVersion
             } else if (nowStatus == 1) {
-                versionID.innerHTML = "发现新版本：v" + nowVersion + " ↦ " + newVersion
+                versionID.innerHTML = "發現新版本：v" + nowVersion + " ↦ " + newVersion
             } else {
-                versionID.innerHTML = "网络错误，检测失败！"
+                versionID.innerHTML = "網路錯誤，檢測失敗！"
             }
         })
 }
 
-// 切换为公共全库
+// 切換為公共全庫
 function changeEgg() {
-    //有自定义json或api执行切换
+    //有自訂json或api執行切換
     if (fdata.jsonurl || fdata.apiurl) {
         document.querySelectorAll('.cf-new-add').forEach(el => el.remove());
         localStorage.removeItem("updatedArticleData")
@@ -235,7 +235,7 @@ function changeEgg() {
         UrlNow = localStorage.getItem("urlNow")
         //console.log("新"+UrlNow)
         var UrlNowPublic = fdata.apipublicurl + 'all?'
-        if (UrlNow !== UrlNowPublic) { //非完整默认公开库
+        if (UrlNow !== UrlNowPublic) { //非完整默認公開庫
             changeUrl = fdata.apipublicurl + 'all?'
         } else {
             if (fdata.jsonurl) {
@@ -251,7 +251,7 @@ function changeEgg() {
     }
 }
 
-// 首次加载文章
+// 首次載入文章
 function FetchFriendCircle(sortNow, changeUrl) {
     var end = fdata.initnumber
     var fetchUrl = UrlNow + "rule=" + sortNow + "&start=0&end=" + end
@@ -272,7 +272,7 @@ function FetchFriendCircle(sortNow, changeUrl) {
         })
 }
 
-// 点击切换排序
+// 點擊切換排序
 function changeSort(event) {
     sortNow = event.currentTarget.dataset.sort
     localStorage.setItem("sortNow", sortNow)
@@ -286,7 +286,7 @@ function changeSort(event) {
     }
 }
 
-//查询个人文章列表
+//查詢個人文章列表
 function openMeShow(event) {
     event.preventDefault()
     var parse_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
@@ -305,14 +305,14 @@ function openMeShow(event) {
     }
 }
 
-// 关闭 show
+// 關閉 show
 function closeShow() {
     document.getElementById('cf-overlay').className -= 'cf-show-now';
     document.getElementById('cf-overshow').className -= 'cf-show-now';
     document.getElementById('cf-overshow').innerHTML = '';
 }
 
-// 点击开往
+// 點擊開往
 var noClick = 'ok';
 
 function openToShow() {
@@ -329,14 +329,14 @@ function openToShow() {
     }
 }
 
-// 展示个人文章列表
+// 展示個人文章列表
 function fetchShow(url) {
     var closeHtml = `
     <div class="cf-overshow-close" onclick="closeShow()"></div>
   `
     document.getElementById('cf-overlay').className = 'cf-show-now';
     document.getElementById('cf-overshow').insertAdjacentHTML('afterbegin', closeHtml);
-    console.log("开往" + url)
+    console.log("開往" + url)
     fetch(url)
         .then(res => res.json())
         .then(json => {
@@ -357,7 +357,7 @@ function initFriendCircle(sortNow, changeUrl) {
     FetchFriendCircle(sortNow, changeUrl);
 }
 
-// 执行初始化
+// 執行初始化
 if(document.getElementById('cf-container')){
     initFriendCircle(sortNow);
 }

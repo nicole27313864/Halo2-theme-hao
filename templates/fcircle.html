@@ -12,28 +12,28 @@
 
     <div class="page" id="body-wrap">
 
-        <!-- 头部导航栏 -->
+        <!-- 頭部導航欄 -->
         <header class="not-top-img" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = ${singlePage.spec.title})}"></nav>
         </header>
         <main class="layout hide-aside" id="content-inner">
             <div id="page">
                 <div  th:replace="~{macro/author-content :: author-content(background = ${singlePage.spec.cover},
-                smallTitle = '友链',
+                smallTitle = '友鏈',
                 bigTitle = ${singlePage.spec.title},
                 detail = ${singlePage.spec.excerpt.raw},
                 buttonUrl = ${theme.config.fcircle.buttonUrl},
                 buttonTitle = ${theme.config.fcircle.buttonTitle})}" ></div>
-                <!--钓鱼-->
+                <!--釣魚-->
                 <th:block th:if="${theme.config.fcircle.fcircleRandomFriendsEnable}" >
                     <div  class="title-h2-a">
                         <div class="title-h2-a-left">
-                            <h2 style="padding-top:0;margin:.6rem 0 .6rem">🎣 钓鱼</h2><a class="random-post-start"
+                            <h2 style="padding-top:0;margin:.6rem 0 .6rem">🎣 釣魚</h2><a class="random-post-start"
                                                                                          href="javascript:fetchRandomPost();"><i
                                 class="haofont hao-icon-arrow-rotate-right"></i></a>
                         </div>
                         <div th:if="${not #strings.isEmpty(theme.config.link.linksUrl)}" class="title-h2-a-right">
-                            <a class="random-post-all" th:href="${theme.config.link.linksUrl}">全部友链</a>
+                            <a class="random-post-all" th:href="${theme.config.link.linksUrl}">全部友鏈</a>
                         </div>
                     </div>
                     <div id="random-post"></div>
@@ -47,23 +47,23 @@
                     <script th:src="${assets_link + '/libs/moments/random-friends-post.js'}"></script>
 
                 </th:block>
-                <!--鱼塘-->
+                <!--魚塘-->
                 <!-- <div id="hexo-circle-of-friends-root"></div>
                 <script defer data-pjax src="https://cdn.yzczi.com/anzhiyu-blog-static%401.0.0/friends_vue/index2.js"></script> -->
                 <div class="title-h2-a">
-                    <div class="title-h2-a-left"><h2 style="padding-top: 0;margin:0.6rem 0 0.6rem;">🐟 鱼塘</h2></div>
-                    <div class="title-h2-a-right"><span>以下内容自动生成，未经过审核</span></div>
+                    <div class="title-h2-a-left"><h2 style="padding-top: 0;margin:0.6rem 0 0.6rem;">🐟 魚塘</h2></div>
+                    <div class="title-h2-a-right"><span>以下內容自動生成，未經過審核</span></div>
                 </div>
                 <div id="hexo-circle-of-friends-root"></div>
                 <script type="text/javascript">
                     var UserConfig = {
-                        // 填写你的api地址
+                        // 填寫你的api地址
                         private_api_url: "[(${theme.config.fcircle.apiurl})]",
-                        // 点击加载更多时，一次最多加载几篇文章，默认10
+                        // 點擊載入更多時，一次最多載入幾篇文章，默認10
                         page_turning_number: 12,
-                        // 头像加载失败时，默认头像地址
+                        // 頭像載入失敗時，默認頭像地址
                         error_img: 'https://sdn.geekzu.org/avatar/57d8260dfb55501c37dde588e7c3852c',
-                        // 进入页面时第一次的排序规则
+                        // 進入頁面時第一次的排序規則
                         sort_rule: 'created'
                     }
                 </script>
@@ -72,7 +72,7 @@
                 <script type="text/javascript" th:src="${assets_link + '/libs/moments/bundle.js'}"></script>
 
                 <style>
-                    /*修复友链朋友圈管理面板显示太大导致无法关闭的bug*/
+                    /*修復友鏈朋友圈管理面板顯示太大導致無法關閉的bug*/
                     .cf-manage-pannel[data-v-34921c7c] {
                         width: 80% !important;
                         height: 80% !important;
@@ -92,7 +92,7 @@
         </main>
         <!-- 底部 -->
         <footer th:replace="~{modules/footer}"/>
-        <!-- 卡片顶部气泡效果 -->
+        <!-- 卡片頂部氣泡效果 -->
         <script th:if="${theme.config.other.bubbleEnable}" async data-pjax th:src="${assets_link + '/libs/canvas/bubble.js'}"></script>
     </div>
 

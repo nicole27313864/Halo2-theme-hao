@@ -1,4 +1,4 @@
-/* 版权信息 */
+/* 版權資訊 */
 /* 背景 */
 #post .post-copyright {
     background: var(--heo-card-bg);
@@ -39,7 +39,7 @@
     flex-wrap: wrap;
 }
 
-/* 捐助工具栏 */
+/* 捐助工具欄 */
 .post-tools-left {
     white-space: nowrap;
     display: flex;
@@ -127,7 +127,7 @@
     border-radius: 5px;
 }
 
-/* 赞赏作者按钮 */
+/* 讚賞作者按鈕 */
 .post-reward .reward-button {
     background: var(--heo-red);
     color: var(--heo-white);
@@ -146,7 +146,7 @@
     border-radius: 4px;
 }
 
-/* 标签列表页 */
+/* 標籤列表頁 */
 
 #post .tag_share .post-meta__tag-list {
     display: flex;

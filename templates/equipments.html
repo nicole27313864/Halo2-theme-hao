@@ -12,7 +12,7 @@
 
     <div class="page" id="body-wrap">
 
-        <!-- 头部导航栏 -->
+        <!-- 頭部導航欄 -->
         <header class="not-top-img" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = ${_title})}"></nav>
         </header>
@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="equipment-item-content-item-info">
                                         <div class="equipment-item-content-item-name"
-                                             th:onclick="rm.rightmenuCopyText([[${equipment.spec.displayName}]]);btf.snackbarShow('已复制装备名称');">
+                                             th:onclick="rm.rightmenuCopyText([[${equipment.spec.displayName}]]);btf.snackbarShow('已複製裝備名稱');">
                                             [[${equipment.spec.displayName}]]
                                         </div>
                                         <div class="equipment-item-content-item-specification">[[${#annotations.get(equipment, 'model')}]]
@@ -64,7 +64,7 @@
                     </th:block>
                 </div>
                 <style>
-                    /* 我的装备 */
+                    /* 我的裝備 */
                     .equipment-item-content {
                         display: flex;
                         flex-direction: row;
@@ -192,7 +192,7 @@
                         cursor: pointer;
                     }
                 </style>
-                <!--/* 评论组件 */-->
+                <!--/* 評論組件 */-->
                 <th:block
                         th:replace="~{modules/comment :: comment(group = 'content.halo.run',
                   kind = 'SinglePage',
@@ -203,7 +203,7 @@
         </main>
         <!-- 底部 -->
         <footer th:replace="~{modules/footer}"/>
-        <!-- 卡片顶部气泡效果 -->
+        <!-- 卡片頂部氣泡效果 -->
         <script th:if="${theme.config.other.bubbleEnable}" async data-pjax
                 th:src="${assets_link + '/libs/canvas/bubble.js'}"></script>
     </div>

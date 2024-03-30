@@ -8,6 +8,10 @@
     border-radius: 12px;
     padding: 34px 0 20px 0;
     border: var(--style-border-always);
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
 }
 
 @media screen and (max-width: 768px) {
@@ -115,7 +119,7 @@ img.post-copyright__author_img_front {
     justify-content: center;
 }
 
-/* 打赏作者按钮 */
+/* 打賞作者按鈕 */
 .post-reward .reward-button {
     background: var(--heo-red);
     color: var(--heo-white);
@@ -160,7 +164,7 @@ img.post-copyright__author_img_front {
     box-shadow: none;
 }
 
-/* 捐助工具栏 */
+/* 捐助工具欄 */
 .post-tools-left {
     white-space: nowrap;
     display: flex;
@@ -218,7 +222,7 @@ img.post-copyright__author_img_front {
     margin-right: 8px;
 }
 
-/* 文章标签 */
+/* 文章標籤 */
 #post .tag_share .post-meta__tags {
     background: var(--heo-card-bg);
     border: var(--style-border-always);

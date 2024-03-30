@@ -12,7 +12,7 @@
 
     <div class="page" id="body-wrap">
 
-        <!-- 头部导航栏 -->
+        <!-- 頭部導航欄 -->
         <header class="not-top-img" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = ${_title})}"></nav>
         </header>
@@ -43,23 +43,23 @@
                                         <th:block th:switch="${data.spec.type}">
                                             <th:block th:case="'movie'">
                                                 <i class="haofont hao-icon-dianying" style="font-size: 1rem;"></i>
-                                                <span>电影</span>
+                                                <span>電影</span>
                                             </th:block>
                                             <th:block th:case="'book'">
                                                 <i class="haofont hao-icon-tushu" style="font-size: 1rem;"></i>
-                                                <span>图书</span>
+                                                <span>圖書</span>
                                             </th:block>
                                             <th:block th:case="'music'">
                                                 <i class="haofont hao-icon-yinle" style="font-size: 1rem;"></i>
-                                                <span>音乐</span>
+                                                <span>音樂</span>
                                             </th:block>
                                             <th:block th:case="'game'">
                                                 <i class="haofont hao-icon-youxi" style="font-size: 1rem;"></i>
-                                                <span>游戏</span>
+                                                <span>遊戲</span>
                                             </th:block>
                                             <th:block th:case="'drama'">
                                                 <i class="haofont hao-icon-screen" style="font-size: 1rem;"></i>
-                                                <span>舞台剧</span>
+                                                <span>舞台劇</span>
                                             </th:block>
                                         </th:block>
                                     </div>
@@ -103,7 +103,7 @@
         </main>
         <!-- 底部 -->
         <footer th:replace="~{modules/footer}" />
-        <!-- 卡片顶部气泡效果 -->
+        <!-- 卡片頂部氣泡效果 -->
         <script th:if="${theme.config.other.bubbleEnable}" async data-pjax
                 th:src="${assets_link + '/libs/canvas/bubble.js'}"></script>
     </div>

@@ -11,7 +11,7 @@
 <th:block th:fragment="content">
     <div class="page" id="body-wrap">
 
-        <!-- 头部导航栏 -->
+        <!-- 頭部導航欄 -->
         <header class="not-top-img" id="page-header">
             <nav th:replace="~{modules/nav :: nav(title = '追番')}"></nav>
         </header>
@@ -378,14 +378,14 @@
                             </th:block>
                             <div class="bangumi-pagination">
                                 <a class="bangumi-button bangumi-firstpage" href="javascript:;" target="_self"
-                                   onclick="return false" data-pjax-state=""> 首页</a>
+                                   onclick="return false" data-pjax-state=""> 首頁</a>
                                 <a class="bangumi-button bangumi-previouspage" href="javascript:;" target="_self"
-                                   onclick="return false" data-pjax-state="">上一页</a>
+                                   onclick="return false" data-pjax-state="">上一頁</a>
                                 <span class="bangumi-pagenum">1 / 1</span>
                                 <a class="bangumi-button bangumi-nextpage" href="javascript:;" target="_self"
-                                   onclick="return false" data-pjax-state="">下一页</a>
+                                   onclick="return false" data-pjax-state="">下一頁</a>
                                 <a class="bangumi-button bangumi-lastpage" href="javascript:;" target="_self"
-                                   onclick="return false" data-pjax-state="">尾页</a>
+                                   onclick="return false" data-pjax-state="">尾頁</a>
                             </div>
                         </div>
                         <div id="bangumi-item2" class="bangumi-show">
@@ -394,14 +394,14 @@
                             </th:block>
                             <div class="bangumi-pagination">
                                 <a class="bangumi-button bangumi-firstpage" href="javascript:;" target="_self"
-                                   onclick="return false" data-pjax-state=""> 首页</a>
+                                   onclick="return false" data-pjax-state=""> 首頁</a>
                                 <a class="bangumi-button bangumi-previouspage" href="javascript:;" target="_self"
-                                   onclick="return false" data-pjax-state="">上一页</a>
+                                   onclick="return false" data-pjax-state="">上一頁</a>
                                 <span class="bangumi-pagenum">1 / 1</span>
                                 <a class="bangumi-button bangumi-nextpage" href="javascript:;" target="_self"
-                                   onclick="return false" data-pjax-state="">下一页</a>
+                                   onclick="return false" data-pjax-state="">下一頁</a>
                                 <a class="bangumi-button bangumi-lastpage" href="javascript:;" target="_self"
-                                   onclick="return false" data-pjax-state="">尾页</a>
+                                   onclick="return false" data-pjax-state="">尾頁</a>
                             </div>
                         </div>
                         <div id="bangumi-item3" class="bangumi-hide">
@@ -410,14 +410,14 @@
                             </th:block>
                             <div class="bangumi-pagination">
                                 <a class="bangumi-button bangumi-firstpage" href="javascript:;" target="_self"
-                                   onclick="return false" data-pjax-state=""> 首页</a>
+                                   onclick="return false" data-pjax-state=""> 首頁</a>
                                 <a class="bangumi-button bangumi-previouspage" href="javascript:;" target="_self"
-                                   onclick="return false" data-pjax-state="">上一页</a>
+                                   onclick="return false" data-pjax-state="">上一頁</a>
                                 <span class="bangumi-pagenum">1 / 1</span>
                                 <a class="bangumi-button bangumi-nextpage" href="javascript:;" target="_self"
-                                   onclick="return false" data-pjax-state="">下一页</a>
+                                   onclick="return false" data-pjax-state="">下一頁</a>
                                 <a class="bangumi-button bangumi-lastpage" href="javascript:;" target="_self"
-                                   onclick="return false" data-pjax-state="">尾页</a>
+                                   onclick="return false" data-pjax-state="">尾頁</a>
                             </div>
                         </div>
                     </div>
@@ -428,7 +428,7 @@
                             (function () {// eslint-disable-next-line func-style
                                 function a() {
                                     this.classList.add("bangumi-active");
-                                    for (var a = this.siblings(), b = 0; b < a.length; b++) a[b].classList.remove("bangumi-active");// 显示对应板块
+                                    for (var a = this.siblings(), b = 0; b < a.length; b++) a[b].classList.remove("bangumi-active");// 顯示對應板塊
                                     var c = this.id.replace("tab", "item"), d = document.getElementById(c);
                                     d.classList.remove("bangumi-hide"), d.classList.add("bangumi-show"), a = document.getElementById(c).siblings();
                                     for (var e = 0; e < a.length; e++) a[e].classList.remove("bangumi-show"), a[e].classList.add("bangumi-hide")
@@ -523,7 +523,7 @@
                     </script>
                 </div>
                 <hr>
-                <!--/* 评论组件 */-->
+                <!--/* 評論組件 */-->
                 <th:block
                         th:replace="~{modules/comment :: comment(group = 'content.halo.run',
                   kind = 'SinglePage',

@@ -1,7 +1,7 @@
 <th:block th:fragment="nav-menu-recursion(menuItem)">
-    <!-- 有子菜单则显示子菜单 -->
+    <!-- 有子菜單則顯示子菜單 -->
     <th:block th:if="${not #lists.isEmpty(menuItem.children)}">
-        <!-- 子菜单 -->
+        <!-- 子菜單 -->
         <div class="menus_item_child" th:classappend="${#annotations.get(menuItem,'isVertical')=='1'?'vertical_nav':''}">
             <div class="recursion_menus_item" th:each="childMenu : ${menuItem.children}">
                 <a class="site-page child" th:target="${childMenu.spec.target?.value}" th:href="@{${childMenu.status.href}}">
@@ -10,19 +10,19 @@
                        style="font-size:.9em"></i>
                     <span th:text="${childMenu.status.displayName}"></span>
                 </a>
-                <!--递归调用-->
+                <!--遞迴調用-->
                 <div th:replace="~{modules/widgets/nav-menu :: nav-menu-recursion(menuItem=${childMenu})}"></div>
             </div>
         </div>
     </th:block>
 </th:block>
 
-<!-- 导航栏菜单栏 -->
+<!-- 導航欄選單欄 -->
 <div id="menus" th:fragment="nav-menu">
 
     <div class="menus_items">
 
-        <!-- 第一层仅展示使用，不做跳转 -->
+        <!-- 第一層僅展示使用，不做跳轉 -->
         <div class="menus_item" th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
 
             <!-- javascript:void(0);" -->
@@ -36,7 +36,7 @@
             <a th:if="${not #lists.isEmpty(menuItem.children)}" class="site-page" rel="external nofollow">
                 <span th:text="${menuItem.status.displayName}"></span>
             </a>
-            <!--递归调用-->
+            <!--遞迴調用-->
             <div th:replace="~{modules/widgets/nav-menu :: nav-menu-recursion(menuItem=${menuItem})}"></div>
         </div>
 

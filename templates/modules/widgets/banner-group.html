@@ -13,7 +13,7 @@
 
         <div class="tags-group-all">
 
-            <!--  banners 使用默认值-->
+            <!--  banners 使用預設值-->
             <div class="tags-group-wrapper" th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'default')}">
                 <div class="tags-group-icon-pair">
                     <div class="tags-group-icon" style="background:#989bf8">
@@ -269,7 +269,7 @@
                 </div>
             </div>
 
-            <!--  banners 使用默认值-->
+            <!--  banners 使用預設值-->
             <div class="tags-group-wrapper"
                  th:if="${#strings.equals(theme.config.top.BannerLeft.bannersBackground, 'techStack')}"
                  th:with="techs = ${theme.config.top.BannerLeft.techStack}">
@@ -300,9 +300,9 @@
                 </th:block>
             </div>
         </div>
-        <!-- 随机前往一篇文章 -->
+        <!-- 隨機前往一篇文章 -->
         <a id="banner-hover" onclick="toRandomPost()">
-            <span class="bannerText">随便逛逛</span>
+            <span class="bannerText">隨便逛逛</span>
             <i class="haofont hao-icon-arrow-right banner-righticon"></i>
         </a>
     </div>
@@ -400,8 +400,8 @@
     <script th:inline="javascript">
 
         function toRandomPost() {
-            // 随机跳转首页的一篇文章
-            // 后续改成跳转全站的文章，可以从 sitemap 中获取所有文章
+            // 隨機跳轉首頁的一篇文章
+            // 後續改成跳轉全站的文章，可以從 sitemap 中獲取所有文章
             let posts = [[${posts}]];
 
             let datum = posts.total < posts.size ? posts.total : posts.size;
@@ -410,7 +410,7 @@
 
             let post = posts.items[number];
 
-            // 当前窗口打开
+            // 當前窗口打開
             //window.location.href = post.status.permalink;
             pjax.loadUrl(post.status.permalink)
             // window.open(post.status.permalink);

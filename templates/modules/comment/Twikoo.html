@@ -4,7 +4,7 @@ not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
     <div class="js-pjax">
         <script th:src="${assets_link + '/js/comment/twikoo.js'}"></script>
     </div>
-    <!-- 最近评论 -->
+    <!-- 最近評論 -->
     <script>
         window.addEventListener('load', () => {
             const getComment = () => {
@@ -31,9 +31,9 @@ not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
                     }).catch(function (err) {
                         const $dom = document.querySelector('#card-newest-comments .aside-list')
                         const $newcomm = document.querySelector('#newcomm')
-                        $dom.innerHTML = "无法获取评论，请确认相关配置是否正确"
+                        $dom.innerHTML = "無法獲取評論，請確認相關配置是否正確"
                         if($newcomm){
-                            $newcomm.innerHTML = "无法获取评论，请确认相关配置是否正确"
+                            $newcomm.innerHTML = "無法獲取評論，請確認相關配置是否正確"
                         }
 
                     })
@@ -70,7 +70,7 @@ not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
                                 </div>`
                     }
                 } else {
-                    result += '没有评论'
+                    result += '沒有評論'
                 }
 
                 let $dom = document.querySelector('#card-newest-comments .aside-list')
@@ -122,7 +122,7 @@ not #strings.isEmpty(theme.config.comments.twikoos.envId)}">
 
                     }
                 } else {
-                    result += '没有评论'
+                    result += '沒有評論'
                 }
 
                 let $dom = document.querySelector('#newcomm')

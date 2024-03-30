@@ -20,8 +20,8 @@ let halo = {
     },
 
     /**
-     * 代码
-     * 只适用于halo的代码渲染
+     * 代碼
+     * 只適用於halo的代碼渲染
      */
     addPrismTool: () => {
         if (typeof Prism === 'undefined' || typeof document === 'undefined') {
@@ -136,14 +136,14 @@ let halo = {
             var r = a.element.parentNode;
             var toolbar = r.nextElementSibling;
 
-            //标题
+            //標題
             isEnableTitle && toolbar.classList.add("c-title")
-            //标题分割线
+            //標題分割線
             isEnableHr && toolbar.classList.add("c-hr")
             var customItem = document.createElement("div");
             customItem.className = 'custom-item absolute top-0'
 
-            //复制
+            //複製
             if (isEnableCopy) {
                 var copy = document.createElement("i");
 
@@ -156,7 +156,7 @@ let halo = {
                             return a.element.textContent;
                         },
                         success: function () {
-                            btf.snackbarShow('复制成功')
+                            btf.snackbarShow('複製成功')
                             setState('copy-success');
                             resetText();
                         },
@@ -180,7 +180,7 @@ let halo = {
                 if ($target.contains("code-expander")) prismShrinkFn(this);
             };
 
-            //折叠
+            //摺疊
             if (isEnableExpander) {
                 var expander = document.createElement("i");
                 expander.className = 'fa-sharp fa-solid haofont hao-icon-angle-down code-expander cursor-pointer'
@@ -348,11 +348,11 @@ let halo = {
             }
 
         }
-        document.getElementById("danmuBtn").innerHTML = "<button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.remove('hidedanmu')\">显示弹幕</button> <button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.add('hidedanmu')\">隐藏弹幕</button>"
+        document.getElementById("danmuBtn").innerHTML = "<button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.remove('hidedanmu')\">顯示彈幕</button> <button class=\"hideBtn\" onclick=\"document.getElementById('danmu').classList.add('hidedanmu')\">隱藏彈幕</button>"
     },
 
     changeMarginLeft(element) {
-        var randomMargin = Math.floor(Math.random() * 901) + 100; // 生成100-1000之间的随机数
+        var randomMargin = Math.floor(Math.random() * 901) + 100; // 生成100-1000之間的隨機數
         element.style.marginLeft = randomMargin + 'px';
     },
 
@@ -383,8 +383,8 @@ let halo = {
                         <div id="power-star-image" style="background-image: url('/themes/theme-hao/assets/images/afadian/afadian.webp')">
                         </div>
                         <div class="power-star-body">
-                            <div id="power-star-title">还没有人赞助～</div>
-                            <div id="power-star-desc">为爱发电，点击赞助</div>
+                            <div id="power-star-title">還沒有人贊助～</div>
+                            <div id="power-star-desc">為愛發電，點擊贊助</div>
                         </div>`;
             } else {
                 if (powerStar) {
@@ -394,7 +394,7 @@ let halo = {
                         </div>
                         <div class="power-star-body">
                             <div id="power-star-title">${data[0].name}</div>
-                            <div id="power-star-desc">更多支持，为爱发电</div>
+                            <div id="power-star-desc">更多支持，為愛發電</div>
                         </div>`;
                 }
 
@@ -431,11 +431,11 @@ let halo = {
         var default_enable = GLOBAL_CONFIG.source.footer.default_enable
         if (default_enable) {
             var adElement = document.getElementById("footer-banner");
-            var notMusic = document.body.getAttribute("data-type") != "music"; // 检测是否为音乐页面
+            var notMusic = document.body.getAttribute("data-type") != "music"; // 檢測是否為音樂頁面
             if ((adElement.offsetWidth <= 0 || adElement.offsetHeight <= 0) && notMusic) {
-                // 元素不可见，可能被拦截
+                // 元素不可見，可能被攔截
                 console.log("Element may be blocked by AdBlocker Ultimate");
-                alert("页脚信息可能被AdBlocker Ultimate拦截，请检查广告拦截插件！")
+                alert("頁尾資訊可能被AdBlocker Ultimate攔截，請檢查廣告攔截插件！")
             }
         }
     }

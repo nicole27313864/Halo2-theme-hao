@@ -4,7 +4,7 @@
         <script th:src="${assets_link + '/js/comment/artalk.js'}"></script>
         <input type="hidden" name="page-type" id="page-type" value="album">
     </div>
-    <!-- 最近评论 -->
+    <!-- 最近評論 -->
     <script>
         window.addEventListener('load', () => {
             const generateHtml = array => {
@@ -31,7 +31,7 @@
                                 </div>`
                     }
                 } else {
-                    result += '没有评论'
+                    result += '沒有評論'
                 }
 
                 let $dom = document.querySelector('#card-newest-comments .aside-list')
@@ -82,7 +82,7 @@
                   `
                     }
                 } else {
-                    result += '没有评论'
+                    result += '沒有評論'
                 }
 
                 let $dom = document.querySelector('#newcomm')
@@ -121,7 +121,7 @@
                         document.querySelector('#newcomm') && necommHtml(artalk)
                     }).catch(e => {
                     const $dom = document.querySelector('#card-newest-comments .aside-list')
-                    $dom.innerHTML = "无法获取评论，请确认相关配置是否正确"
+                    $dom.innerHTML = "無法獲取評論，請確認相關配置是否正確"
                 })
             }
             const newestCommentInit = () => {

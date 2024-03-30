@@ -1,22 +1,22 @@
 <div class="bbTimeList container" id="bbTimeList"
      th:if="${theme.config.top.moment}">
 
-    <i class="haofont hao-icon-logo-moment" onclick="" style="font-size: 1.3rem;" title="瞬间"></i>
+    <i class="haofont hao-icon-logo-moment" onclick="" style="font-size: 1.3rem;" title="瞬間"></i>
 
-    <!--   未安装插件   -->
+    <!--   未安裝插件   -->
     <th:block th:if="!${pluginFinder.available('PluginMoments')}">
         <div class="swiper-container swiper-no-swiping" id="bbtalk" tabindex="-1">
             <div class="swiper-wrapper" id="bber-talk"
                  onclick="location.href=location.href='https\:\/\/github.com/halo-sigs/plugin-moments'">
-                <div class="li-style swiper-slide">这里需要安装瞬间的插件</div>
-                <div class="li-style swiper-slide">去安装吧！</div>
+                <div class="li-style swiper-slide">這裡需要安裝瞬間的插件</div>
+                <div class="li-style swiper-slide">去安裝吧！</div>
             </div>
         </div>
         <i class="bber-gotobb haofont hao-icon-circle-arrow-right"
-           onclick="location.href=location.href='https\:\/\/github.com/halo-sigs/plugin-moments'" title="下载插件"></i>
+           onclick="location.href=location.href='https\:\/\/github.com/halo-sigs/plugin-moments'" title="下載插件"></i>
     </th:block>
 
-    <!--   瞬间插件   -->
+    <!--   瞬間插件   -->
     <th:block th:if="${pluginFinder.available('PluginMoments')}">
         <div class="swiper-container swiper-no-swiping" id="bbtalk" tabindex="-1">
             <div class="swiper-wrapper" id="bber-talk" onclick="pjax.loadUrl('/moments')" th:if="${momentFinder}">

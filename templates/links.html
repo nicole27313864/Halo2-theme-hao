@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'links',title = ${'友链' + ' | ' + site.title}, head = ~{::head})}">
+      th:replace="~{modules/layouts/layout :: layout(content = ~{::content}, htmlType = 'links',title = ${'友鏈' + ' | ' + site.title}, head = ~{::head})}">
 <th:block th:fragment="head">
-    <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = '友链',
+    <th:block th:replace="~{modules/common/open-graph :: open-graph(_title = '友鏈',
                 _permalink = '/links',
                 _cover = ${theme.config.other.opengraph.image},
                 _excerpt = ${site.seo.description},
@@ -12,7 +12,7 @@
 
     <div class="page" id="body-wrap">
         <header class="not-top-img" id="page-header">
-            <nav th:replace="~{modules/nav :: nav(title = '友链')}"></nav>
+            <nav th:replace="~{modules/nav :: nav(title = '友鏈')}"></nav>
             <link rel="stylesheet" type="text/css" th:href="${assets_link + '/libs/fcircle/heo-fcircle3.css'}">
 
         </header>
@@ -21,7 +21,7 @@
                 <th:block th:replace="~{macro/content-links :: content-links(${htmlType})}" />
 
                 <hr/>
-                <!--/* 评论组件 */-->
+                <!--/* 評論組件 */-->
                 <th:block
                         th:replace="~{modules/comment :: comment(group = 'content.halo.run',
                   kind = 'SinglePage',
@@ -29,7 +29,7 @@
                   allowComment = true)}"/>
 
                 <style>
-                    /*修复友链页面表情选择器无法显示完全的bug*/
+                    /*修復友鏈頁面表情選擇器無法顯示完全的bug*/
                     .tk-submit {
                         overflow: inherit !important;
                     }

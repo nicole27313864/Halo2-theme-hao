@@ -1,14 +1,14 @@
-/* 代码块纯黑色背景 */
+/* 代碼塊純黑色背景 */
 code[class*=" language-"], pre[class*=" language-"]{
     background: #18171d;
 }
 
-/* banner 字体图标大小及位置 */
+/* banner 字體圖示大小及位置 */
 i.haofont.hao-icon-arrow-right.banner-righticon{
     font-size: 80px;
 }
 
-/* 自我介绍渐变色背景 */
+/* 自我介紹漸變色背景 */
 #aside-content > .card-widget.card-info::before {
     background: linear-gradient(-25deg, var(--heo-main), #031764, var(--heo-main), #67044d);
     background-size: 400%;
@@ -30,14 +30,14 @@ i.haofont.hao-icon-arrow-right.banner-righticon{
     background: transparent !important;
 }
 
-/* 导航子菜单闪跳 */
+/* 導航子菜單閃跳 */
 #nav .menus_items .menus_item .menus_item_child li a{
     padding: 0.3rem 0.5rem;
 }
 
 
 
-/* 通讯录 */
+/* 通訊錄 */
 :root {
     --card-friend-class-desc-bgcolor: #e7e7e7;
     --card-friend-name-color: #000;
@@ -175,13 +175,13 @@ i.haofont.hao-icon-arrow-right.banner-righticon{
     width: 14em;
     color: var(--card-friend-descr-color)
 }
-/* 通讯录 */
+/* 通訊錄 */
 
 
 
 
 
-/* 音乐天地 */
+/* 音樂天地 */
 #aside-content .item-headline-music {
     padding-bottom: 0;
     margin-left: 8px;
@@ -267,10 +267,10 @@ i.haofont.hao-icon-arrow-right.banner-righticon{
     background: 0 0 !important
 }
 
-/* 音乐天地 */
+/* 音樂天地 */
 
 
-/* 小板报 */
+/* 小板報 */
 #welcome-info {
     overflow: hidden;
     border-radius: 14px;
@@ -281,7 +281,7 @@ i.haofont.hao-icon-arrow-right.banner-righticon{
 #aside-content .card-announcement .item-headline i{
     color: red;
 }
-/* 小板报 */
+/* 小板報 */
 
 
 /* Steam卡片 */
@@ -366,7 +366,7 @@ i.haofont.hao-icon-arrow-right.banner-righticon{
 
 /* Steam卡片 */
 
-/* 分类3D */
+/* 分類3D */
 #libCategories .card-info p{
     font-size: 0.9rem;
     font-weight: 400;
@@ -2475,7 +2475,7 @@ p.p.gray,span.p.gray {
 }
 
 
-/*适配GitHub仓库*/
+/*適配GitHub倉庫*/
 #article-container a:not(.fancybox).repo-title:hover,#article-container a:not(.fancybox).mr-3:hover{
     text-decoration: none;
     border-bottom: 0px;

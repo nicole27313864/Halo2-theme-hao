@@ -1,6 +1,6 @@
 
 
-/* 获取直属子元素 */
+/* 獲取直屬子元素 */
 function getChildren(el, className) {
     for (let item of el.children) if (item.className === className) return item;
     return null;
@@ -30,10 +30,10 @@ function extractHeight(occupied, width, height) {
 }
 
 
-// 跳转链接的卡片
+// 跳轉連結的卡片
 document.addEventListener("DOMContentLoaded", () => {
 
-    // 分栏 tab
+    // 分欄 tab
     customElements.define(
         "hao-tabs",
         class HaoTabs extends HTMLElement {
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-    // 彩虹虚线
+    // 彩虹虛線
     customElements.define(
         "hao-dotted",
         class DottedDom extends HTMLElement {
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-    // 进度条
+    // 進度條
     customElements.define(
         "hao-progress",
         class ProgressDom extends HTMLElement {
@@ -127,15 +127,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-    // 小标记
+    // 小標記
     customElements.define(
         "hao-sign",
         class SignDom extends HTMLElement {
             constructor() {
                 super();
                 this.options = {
-                    type: this.getAttribute("type"), // 小标签类型
-                    content: this.innerHTML, // 内容
+                    type: this.getAttribute("type"), // 小標籤類型
+                    content: this.innerHTML, // 內容
                 };
                 this.render();
             }
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    // B站视频
+    // B站影片
     customElements.define(
         "hao-bilibili",
         class BiliBiliDom extends HTMLElement {
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 this.render();
             }
             render() {
-                if (!this.options.bvid) return (this.innerHTML = "请填写正确的bvid");
+                if (!this.options.bvid) return (this.innerHTML = "請填寫正確的bvid");
                 const realHeight = extractHeight(this.parentElement.offsetWidth, this.options.width, this.options.height);
                 this.setAttribute("height", realHeight);
                 this.innerHTML = `
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 this.render();
             }
             render() {
-                if (!this.options.src) return (this.innerHTML = "请填写正确的pdf链接");
+                if (!this.options.src) return (this.innerHTML = "請填寫正確的pdf連結");
                 const realHeight = extractHeight(this.parentElement.offsetWidth, this.options.width, this.options.height);
                 this.setAttribute("height", realHeight);
                 this.innerHTML = `
@@ -204,8 +204,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 this.options = {
                     link: this.getAttribute("link") || 'https://0206.ink/',
                     img: this.getAttribute("img"),
-                    tip: this.getAttribute("tip") || '小标题',
-                    cardTitle: this.getAttribute("cardTitle") || '标题',
+                    tip: this.getAttribute("tip") || '小標題',
+                    cardTitle: this.getAttribute("cardTitle") || '標題',
                     logo: this.getAttribute("logo"),
                     title: this.getAttribute("title"),
                     subTitle: this.getAttribute("subTitle"),
@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-    // 折叠框 folding
+    // 摺疊框 folding
     customElements.define(
         "hao-folding",
         class HaoFolding extends HTMLElement {
@@ -282,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    // 链接卡片 link
+    // 連結卡片 link
     customElements.define(
         "hao-tag-link",
         class HaoTagLink extends HTMLElement {
@@ -346,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-    // 上标标签 tip
+    // 上標標籤 tip
     customElements.define(
         "hao-tip",
         class HaoTip extends HTMLElement {
@@ -417,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    // 按钮 btns
+    // 按鈕 btns
     customElements.define(
         "hao-btns",
         class HaoBtns extends HTMLElement {
@@ -494,7 +494,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-    // gallerygroup 相册图库
+    // gallerygroup 相冊圖庫
     customElements.define(
         "hao-gallery-group",
         class HaoGalleryGroup extends HTMLElement {
@@ -531,7 +531,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-    // gallery 相册
+    // gallery 相冊
     customElements.define(
         "hao-gallery",
         class HaoGallery extends HTMLElement {
@@ -568,7 +568,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    // flink 友链标签
+    // flink 友鏈標籤
     customElements.define(
         "hao-flink",
         class HaoFlink extends HTMLElement {
@@ -657,7 +657,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    // 复选列表 checkbox
+    // 複選列表 checkbox
     customElements.define(
         "hao-checkbox",
         class HaoCheckbox extends HTMLElement {
@@ -725,7 +725,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }" style="width:${this.options.width};height:${
                         this.options.height
                     }"></iframe>`;
-                else this.innerHTML = "视频地址未填写！";
+                else this.innerHTML = "影片網址未填寫！";
             }
         }
     );

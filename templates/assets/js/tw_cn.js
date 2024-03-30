@@ -2,16 +2,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     const translate = GLOBAL_CONFIG.translate
     const snackbarData = GLOBAL_CONFIG.Snackbar
-    // 網站默認語言，1: 繁體中文, 2: 簡體中文
+    // 網站預設語言，1: 繁體中文, 2: 簡體中文
     const defaultEncoding = translate.defaultEncoding
-    // 延遲時間,若不在前, 要設定延遲翻譯時間, 如100表示100ms,默認為0
+    // 延遲時間,若不在前, 要設定延遲翻譯時間, 如100表示100ms,預設為0
     const translateDelay = translate.translateDelay
     const msgToTraditionalChinese = translate.msgToTraditionalChinese; // 此處可以更改為你想要顯示的文字
     const msgToSimplifiedChinese = translate.msgToSimplifiedChinese; // 同上，但兩處均不建議更改
     // 此處可以更改為你想要顯示的文字
     const rightMenuMsgToTraditionalChinese = '<i class="haofont hao-icon-fanti" style="font-size: 19px;"></i><span>轉為繁體</span>'
     // 同上，但兩處均不建議更改
-    const rightMenuMsgToSimplifiedChinese = '<i class="haofont hao-icon-jianti" style="font-size: 19px;"></i><span>转为简体</span>'
+    const rightMenuMsgToSimplifiedChinese = '<i class="haofont hao-icon-jianti" style="font-size: 19px;"></i><span>轉為簡體</span>'
     
     
     let currentEncoding = defaultEncoding

@@ -12,7 +12,7 @@
         }, null))
 
         function versionOld(ctx){
-            // 旧版本兼容性补丁
+            // 舊版本相容性補丁
             ctx.getCommentList().forEach(comment => {
                 const $content = comment.getRender().$content
                 btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
@@ -20,7 +20,7 @@
         }
 
         function version_2_7_3_WithUpper(ctx){
-            // 2.7.3 版本及以后版本支持
+            // 2.7.3 版本及以後版本支持
             ctx.get('list').getCommentNodes().forEach(comment => {
                 const $content = comment .getRender().$content
                 btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
@@ -30,7 +30,7 @@
 
         function versionCheck(ctx){
             if(ctx.getCommentList != undefined){
-                // Artalk 版本小于于 2.7.3
+                // Artalk 版本小於於 2.7.3
                 versionOld(ctx);
             }else{
                 version_2_7_3_WithUpper(ctx);

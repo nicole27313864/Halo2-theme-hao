@@ -1,25 +1,25 @@
 let heo_cookiesTime = null
-// 第一次播放音乐
+// 第一次播放音樂
 ,heo_musicFirst = false
-// 音乐播放状态
+// 音樂播放狀態
 ,heo_musicPlaying = false
 ,heo_keyboard = false
 ,heo_intype = false
 ,lastSayHello = ""
 ,refreshNum = 1;
-// 私有函数
+// 私有函數
 var heo = {
-    // 检测显示模式
+    // 檢測顯示模式
     darkModeStatus: function () {
         let theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
         if (theme == 'light') {
             $(".menu-darkmode-text").text("深色模式");
         } else {
-            $(".menu-darkmode-text").text("浅色模式");
+            $(".menu-darkmode-text").text("淺色模式");
         }
     },
 
-    // 首页bb
+    // 首頁bb
     initIndexEssay: function() {
         if (document.querySelector("#bber-talk"))
             $(".swiper-wrapper .swiper-slide").each(function () {
@@ -39,7 +39,7 @@ var heo = {
     },
 
 
-    // 只在首页显示
+    // 只在首頁顯示
     onlyHome: function () {
         var urlinfo = window.location.pathname;
         urlinfo = decodeURIComponent(urlinfo);
@@ -50,10 +50,10 @@ var heo = {
         }
     },
 
-    //是否在首页
+    //是否在首頁
     is_Post: function () {
-        var url = window.location.href;  //获取url
-        if (url.indexOf("/archives/") >= 0) { //判断url地址中是否包含code字符串
+        var url = window.location.href;  //獲取url
+        if (url.indexOf("/archives/") >= 0) { //判斷url地址中是否包含code字串
             return true;
         } else {
             return false;
@@ -61,7 +61,7 @@ var heo = {
     },
 
 
-    //监测是否在页面开头
+    //監測是否在頁面開頭
     addNavBackgroundInit: function() {
         var e = 0
             , t = 0;
@@ -102,7 +102,7 @@ var heo = {
         }
     },
 
-    // 页脚友链
+    // 頁尾友鏈
     addFriendLinksInFooter: function () {
         var footerRandomFriendsBtn = document.getElementById("footer-random-friends-btn");
         if(!footerRandomFriendsBtn) return;
@@ -146,7 +146,7 @@ var heo = {
         friendLinksInFooterInit();
     },
 
-    //禁止图片右键单击
+    //禁止圖片右鍵單擊
     stopImgRightDrag: function () {
         var img = $("img");
         img.on("dragstart", function () {
@@ -154,15 +154,15 @@ var heo = {
         });
     },
 
-    //置顶文章横向滚动
+    //置頂文章橫向滾動
     topPostScroll: function () {
         if (document.getElementById("recent-post-top")) {
             let xscroll = document.getElementById("recent-post-top");
             xscroll.addEventListener("mousewheel", function (e) {
-                //计算鼠标滚轮滚动的距离
+                //計算滑鼠滾輪滾動的距離
                 let v = -e.wheelDelta / 2;
                 xscroll.scrollLeft += v;
-                //阻止浏览器默认方法
+                //阻止瀏覽器預設方法
                 if (document.body.clientWidth < 1300) {
                     e.preventDefault();
                 }
@@ -174,16 +174,16 @@ var heo = {
         if (document.getElementById("category-bar-items")) {
             let xscroll = document.getElementById("category-bar-items");
             xscroll.addEventListener("mousewheel", function (e) {
-                //计算鼠标滚轮滚动的距离
+                //計算滑鼠滾輪滾動的距離
                 let v = -e.wheelDelta / 2;
                 xscroll.scrollLeft += v;
-                //阻止浏览器默认方法
+                //阻止瀏覽器預設方法
                 e.preventDefault();
             }, false);
         }
     },
 
-    //作者卡片问好
+    //作者卡片問好
     sayhi: function () {
         if (GLOBAL_CONFIG.profileStyle == 'default') {
             if (document.querySelector('#author-info__sayhi')) {
@@ -197,7 +197,7 @@ var heo = {
 
     },
 
-    // 二维码
+    // 二維碼
     qrcodeCreate: function () {
         if (document.getElementById('qrcode')) {
             document.getElementById("qrcode").innerHTML = "";
@@ -221,15 +221,15 @@ var heo = {
         ), 500)
     },
 
-    // 下载图片
-    downloadImage: function (imgsrc, name) { //下载图片地址和图片名
+    // 下載圖片
+    downloadImage: function (imgsrc, name) { //下載圖片地址和圖片名
         rm.hideRightMenu();
         if (rm.downloadimging == false) {
             rm.downloadimging = true;
-            btf.snackbarShow('正在下载中，请稍后', false, 10000)
+            btf.snackbarShow('正在下載中，請稍後', false, 10000)
             setTimeout(function () {
                 let image = new Image();
-                // 解决跨域 Canvas 污染问题
+                // 解決跨域 Canvas 汙染問題
                 image.setAttribute("crossOrigin", "anonymous");
                 image.onload = function () {
                     let canvas = document.createElement("canvas");
@@ -237,38 +237,38 @@ var heo = {
                     canvas.height = image.height;
                     let context = canvas.getContext("2d");
                     context.drawImage(image, 0, 0, image.width, image.height);
-                    let url = canvas.toDataURL("image/png"); //得到图片的base64编码数据
-                    let a = document.createElement("a"); // 生成一个a元素
-                    let event = new MouseEvent("click"); // 创建一个单击事件
-                    a.download = name || "photo"; // 设置图片名称
-                    a.href = url; // 将生成的URL设置为a.href属性
-                    a.dispatchEvent(event); // 触发a的单击事件
+                    let url = canvas.toDataURL("image/png"); //得到圖片的base64編碼數據
+                    let a = document.createElement("a"); // 生成一個a元素
+                    let event = new MouseEvent("click"); // 創建一個單擊事件
+                    a.download = name || "photo"; // 設置圖片名稱
+                    a.href = url; // 將生成的URL設置為a.href屬性
+                    a.dispatchEvent(event); // 觸發a的單擊事件
                 };
                 image.src = imgsrc;
-                btf.snackbarShow('图片已添加盲水印，请遵守版权协议');
+                btf.snackbarShow('圖片已添加盲浮水印，請遵守版權協議');
                 rm.downloadimging = false;
             }, "10000");
         } else {
-            btf.snackbarShow('有正在进行中的下载，请稍后再试');
+            btf.snackbarShow('有正在進行中的下載，請稍後再試');
         }
     },
 
-    //控制评论弹幕
+    //控制評論彈幕
     switchCommentBarrage: function () {
         let commentBarrage = document.querySelector('.comment-barrage');
         if (commentBarrage) {
             if ($(".comment-barrage").is(":visible")) {
                 $(".comment-barrage").hide();
-                $(".menu-commentBarrage-text").text("显示热评");
+                $(".menu-commentBarrage-text").text("顯示熱評");
                 document.querySelector("#consoleCommentBarrage").classList.remove("on");
                 localStorage.setItem('commentBarrageSwitch', 'false');
-                btf.snackbarShow("✨ 已关闭评论弹幕", false, 2000)
+                btf.snackbarShow("✨ 已關閉評論彈幕", false, 2000)
             } else if ($(".comment-barrage").is(":hidden")) {
                 $(".comment-barrage").show();
-                $(".menu-commentBarrage-text").text("关闭热评");
+                $(".menu-commentBarrage-text").text("關閉熱評");
                 document.querySelector("#consoleCommentBarrage").classList.add("on");
                 localStorage.removeItem('commentBarrageSwitch');
-                btf.snackbarShow("✨ 已开启评论弹幕", false, 2000)
+                btf.snackbarShow("✨ 已開啟評論彈幕", false, 2000)
             }
         }
         if(GLOBAL_CONFIG.rightMenuEnable){
@@ -276,7 +276,7 @@ var heo = {
         }
     },
 
-    //隐藏cookie窗口
+    //隱藏cookie窗口
     hidecookie: function() {
         heo_cookiesTime = setTimeout((()=>{
                 document.getElementById("cookies-window").classList.add("cw-hide"),
@@ -288,21 +288,21 @@ var heo = {
         ), 3e3)
     },
 
-    //隐藏今日推荐
+    //隱藏今日推薦
     hideTodayCard: function () {
         if (document.getElementById("todayCard")) {
             document.getElementById("todayCard").classList.add('hide');
         }
     },
 
-    //更改主题色
+    //更改主題色
     changeThemeColor: function (color) {
         if (document.querySelector('meta[name="theme-color"]') !== null) {
             document.querySelector('meta[name="theme-color"]').setAttribute('content', color)
         }
     },
 
-    //自适应主题色
+    //自適應主題色
     initThemeColor: function () {
         if (heo.is_Post()) {
             const currentTop = window.scrollY || document.documentElement.scrollTop
@@ -319,42 +319,42 @@ var heo = {
         }
     },
 
-    //跳转到指定位置
+    //跳轉到指定位置
     jumpTo: function (dom) {
         $(document).ready(function () {
             $("html,body").animate({
                 scrollTop: $(dom).eq(i).offset().top
-            }, 500 /*scroll实现定位滚动*/); /*让整个页面可以滚动*/
+            }, 500 /*scroll實現定位滾動*/); /*讓整個頁面可以滾動*/
         });
     },
 
-    //显示加载动画
+    //顯示載入動畫
     showLoading: function () {
         document.querySelector("#loading-box").classList.remove("loaded");
         let cardColor = getComputedStyle(document.documentElement).getPropertyValue('--heo-card-bg');
         heo.changeThemeColor(cardColor);
     },
 
-    //隐藏加载动画
+    //隱藏載入動畫
     hideLoading: function () {
         document.querySelector("#loading-box").classList.add("loaded");
     },
 
-    //切换音乐播放状态
+    //切換音樂播放狀態
     musicToggle: function (changePaly = true) {
         const navMusicEl = document.getElementById("nav-music");
         if (!heo_musicFirst) {
             heo.musicBindEvent();
             heo_musicFirst = true;
         }
-        let msgPlay = '<i class="haofont hao-icon-play"></i><span>播放音乐</span>';
-        let msgPause = '<i class="haofont hao-icon-pause"></i><span>暂停音乐</span>';
+        let msgPlay = '<i class="haofont hao-icon-play"></i><span>播放音樂</span>';
+        let msgPause = '<i class="haofont hao-icon-pause"></i><span>暫停音樂</span>';
         if (heo_musicPlaying) {
             navMusicEl.classList.remove("playing");
             if(GLOBAL_CONFIG.rightMenuEnable){
                 document.getElementById("menu-music-toggle").innerHTML = msgPlay;
             }
-            document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
+            document.getElementById("nav-music-hoverTips").innerHTML = "音樂已暫停";
             document.querySelector("#consoleMusic").classList.remove("on");
             heo_musicPlaying = false;
             navMusicEl.classList.remove("stretch");
@@ -373,7 +373,7 @@ var heo = {
         }
     },
 
-    // 音乐绑定事件
+    // 音樂綁定事件
     musicBindEvent: function () {
         document.querySelector("#nav-music .aplayer-music").addEventListener("click", function () {
             heo.musicTelescopic();
@@ -383,7 +383,7 @@ var heo = {
         });
     },
 
-    // 音乐伸缩
+    // 音樂伸縮
     musicTelescopic: function () {
         const navMusicEl = document.getElementById("nav-music");
         if (navMusicEl.classList.contains("stretch")) {
@@ -393,19 +393,19 @@ var heo = {
         }
     },
 
-    //音乐上一曲
+    //音樂上一曲
     musicSkipBack: function () {
         document.querySelector("meting-js").aplayer.skipBack(),
             rm.hideRightMenu()
     },
 
-    //音乐下一曲
+    //音樂下一曲
     musicSkipForward: function () {
         document.querySelector("meting-js").aplayer.skipForward(),
             rm.hideRightMenu()
     },
 
-    //获取音乐中的名称
+    //獲取音樂中的名稱
     musicGetName: function () {
         for (var e = $(".aplayer-title"), t = [], o = e.length - 1; o >= 0; o--)
             t[o] = e[o].innerText;
@@ -413,7 +413,7 @@ var heo = {
     },
 
 
-    // 显示打赏中控台
+    // 顯示打賞中控台
     rewardShowConsole: function () {
         $('.console-card-group-reward').attr('style', 'display: flex');
         $('.console-card-group').attr('style', 'display: none');
@@ -422,7 +422,7 @@ var heo = {
 
     },
 
-    //显示中控台
+    //顯示中控台
     showConsole: function () {
         $('.console-card-group-reward').attr('style', 'display: none');
         $('.console-card-group').attr('style', 'display: flex');
@@ -431,12 +431,12 @@ var heo = {
 
     },
 
-    //隐藏中控台
+    //隱藏中控台
     hideConsole: function () {
         document.querySelector("#console").classList.remove("show");
     },
 
-    //快捷键功能开关
+    //快捷鍵功能開關
     keyboardToggle: function () {
         if (heo_keyboard) {
             heo_keyboard = false;
@@ -449,7 +449,7 @@ var heo = {
         }
     },
 
-    //滚动到指定id
+    //滾動到指定id
     scrollTo: function(e) {
         const t = document.getElementById(e);
         if (t) {
@@ -469,7 +469,7 @@ var heo = {
         }
     },
 
-    //隐藏侧边栏
+    //隱藏側邊欄
     hideAsideBtn: () => { // Hide aside
         const $htmlDom = document.documentElement.classList
         $htmlDom.contains('hide-aside')
@@ -487,7 +487,7 @@ var heo = {
             var url = window.location.href;
 
             var photosIndexOf = url.indexOf("?group") >= 0 ? url.indexOf("?group") : -1;
-            if (photosIndexOf >= 0) {//图库页面
+            if (photosIndexOf >= 0) {//圖庫頁面
                 var new_url = url.substr(0,photosIndexOf);
                 var group = url.substr(photosIndexOf)
                 var a, l = new_url.replace(/\/page\/\d$/, "");
@@ -498,15 +498,15 @@ var heo = {
                 a = 1 === n ? l : l + (l.endsWith("/") ? "" : "/") + "page/" + n,
                     document.getElementById("toPageButton").href = a
             }
-            //首页有第一屏就跳转指定位置
+            //首頁有第一屏就跳轉指定位置
             scrollToPost();
 
         }
     },
     changeSayHelloText: function() {
-        const greetings = GLOBAL_CONFIG.helloText.length == 0 ? ["🤖️ 数码科技爱好者", "🔍 分享与热心帮助", "🏠 智能家居小能手", "🔨 设计开发一条龙", "🤝 专修交互与设计", "🏃 脚踏实地行动派", "🧱 团队小组发动机", "💢 壮汉人狠话不多"] : GLOBAL_CONFIG.helloText
+        const greetings = GLOBAL_CONFIG.helloText.length == 0 ? ["🤖️ 數碼科技愛好者", "🔍 分享與熱心幫助", "🏠 智慧家居小能手", "🔨 設計開發一條龍", "🤝 專修交互與設計", "🏃 腳踏實地行動派", "🧱 團隊小組發動機", "💢 壯漢人狠話不多"] : GLOBAL_CONFIG.helloText
             , authorInfoSayHiElement = document.getElementById("author-info__sayhi");
-        // 如果只有一个问候语，设置为默认值
+        // 如果只有一個問候語，設置為預設值
         if (greetings.length === 1) {
             authorInfoSayHiElement.textContent = greetings[0];
             return;
@@ -518,15 +518,15 @@ var heo = {
             lastSayHello = randomGreeting
     },
 
-    //匿名评论
+    //匿名評論
     addRandomCommentInfo: function () {
-        // 从形容词数组中随机取一个值
+        // 從形容詞數組中隨機取一個值
         const randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
 
-        // 从蔬菜水果动物名字数组中随机取一个值
+        // 從蔬菜水果動物名字數組中隨機取一個值
         const randomName = vegetablesAndFruits[Math.floor(Math.random() * vegetablesAndFruits.length)];
 
-        // 将两个值组合成一个字符串
+        // 將兩個值組合成一個字串
         const name = `${randomAdjective}${randomName}`;
 
         function dr_js_autofill_commentinfos() {
@@ -587,7 +587,7 @@ var heo = {
         input.setSelectionRange(-1, -1);
     },
 
-    //爱发电赞助
+    //愛發電贊助
     addPowerLinksInPostRightSide: async function() {
         const image = document.getElementById("power-star-image")
             , star = document.getElementById("power-star")
@@ -608,13 +608,13 @@ var heo = {
         return Math.floor(Math.random() * (t - e)) + e
     },
 
-    //初始化console图标
+    //初始化console圖示
     initConsoleState: function() {
         document.documentElement.classList.contains("hide-aside") ? document.querySelector("#consoleHideAside").classList.add("on") : document.querySelector("#consoleHideAside").classList.remove("on")
     },
 
 
-    // 音乐节目切换背景
+    // 音樂節目切換背景
     changeMusicBg: function (isChangeBg = true) {
         if (window.location.pathname != "/music") {
             return;
@@ -622,21 +622,21 @@ var heo = {
         const anMusicBg = document.getElementById("an_music_bg");
 
         if (isChangeBg) {
-            // player listswitch 会进入此处
+            // player listswitch 會進入此處
             const musiccover = document.querySelector("#anMusic-page .aplayer-pic");
             anMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
         } else {
-            // 第一次进入，绑定事件，改背景
+            // 第一次進入，綁定事件，改背景
             let timer = setInterval(() => {
                 const musiccover = document.querySelector("#anMusic-page .aplayer-pic");
-                // 确保player加载完成
+                // 確保player載入完成
                 if (musiccover) {
                     clearInterval(timer);
                     anMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
-                    // 绑定事件
+                    // 綁定事件
                     heo.addEventListenerChangeMusicBg();
 
-                    // 暂停nav的音乐
+                    // 暫停nav的音樂
                     if(GLOBAL_CONFIG.navMusicEnable){
                         if (
                             document.querySelector("#nav-music meting-js").aplayer &&
@@ -669,15 +669,15 @@ var heo = {
     },
 
 };
-const adjectives = ["美丽的", "英俊的", "聪明的", "勇敢的", "可爱的", "慷慨的", "善良的", "可靠的", "开朗的", "成熟的", "稳重的", "真诚的", "幽默的", "豁达的", "有趣的", "活泼的", "优雅的", "敏捷的", "温柔的", "温暖的", "敬业的", "细心的", "耐心的", "深沉的", "朴素的", "含蓄的", "率直的", "开放的", "务实的", "坚强的", "自信的", "谦虚的", "文静的", "深刻的", "纯真的", "朝气蓬勃的", "慎重的", "大方的", "顽强的", "迷人的", "机智的", "善解人意的", "富有想象力的", "有魅力的", "独立的", "好奇的", "干净的", "宽容的", "尊重他人的", "体贴的", "守信的", "有耐性的", "有责任心的", "有担当的", "有远见的", "有智慧的", "有眼光的", "有冒险精神的", "有爱心的", "有同情心的", "喜欢思考的", "喜欢学习的", "具有批判性思维的", "善于表达的", "善于沟通的", "善于合作的", "善于领导的", "有激情的", "有幽默感的", "有思想的", "有个性的", "有正义感的", "有责任感的", "有创造力的", "有想象力的", "有艺术细胞的", "有团队精神的", "有协调能力的", "有决策能力的", "有组织能力的", "有学习能力的", "有执行能力的", "有分析能力的", "有逻辑思维的", "有创新能力的", "有专业素养的", "有商业头脑的"]
-    , vegetablesAndFruits = ["萝卜", "白菜", "芹菜", "生菜", "青椒", "辣椒", "茄子", "豆角", "黄瓜", "西红柿", "洋葱", "大蒜", "土豆", "南瓜", "豆腐", "韭菜", "花菜", "西兰花", "蘑菇", "金针菇", "苹果", "香蕉", "橙子", "柠檬", "猕猴桃", "草莓", "葡萄", "桃子", "杏子", "李子", "石榴", "西瓜", "哈密瓜", "蜜瓜", "樱桃", "蓝莓", "柿子", "橄榄", "柚子", "火龙果"];
+const adjectives = ["美麗的", "英俊的", "聰明的", "勇敢的", "可愛的", "慷慨的", "善良的", "可靠的", "開朗的", "成熟的", "穩重的", "真誠的", "幽默的", "豁達的", "有趣的", "活潑的", "優雅的", "敏捷的", "溫柔的", "溫暖的", "敬業的", "細心的", "耐心的", "深沉的", "樸素的", "含蓄的", "率直的", "開放的", "務實的", "堅強的", "自信的", "謙虛的", "文靜的", "深刻的", "純真的", "朝氣蓬勃的", "慎重的", "大方的", "頑強的", "迷人的", "機智的", "善解人意的", "富有想像力的", "有魅力的", "獨立的", "好奇的", "乾淨的", "寬容的", "尊重他人的", "體貼的", "守信的", "有耐性的", "有責任心的", "有擔當的", "有遠見的", "有智慧的", "有眼光的", "有冒險精神的", "有愛心的", "有同情心的", "喜歡思考的", "喜歡學習的", "具有批判性思維的", "善於表達的", "善於溝通的", "善於合作的", "善於領導的", "有激情的", "有幽默感的", "有思想的", "有個性的", "有正義感的", "有責任感的", "有創造力的", "有想像力的", "有藝術細胞的", "有團隊精神的", "有協調能力的", "有決策能力的", "有組織能力的", "有學習能力的", "有執行能力的", "有分析能力的", "有邏輯思維的", "有創新能力的", "有專業素養的", "有商業頭腦的"]
+    , vegetablesAndFruits = ["蘿蔔", "白菜", "芹菜", "生菜", "青椒", "辣椒", "茄子", "豆角", "黃瓜", "番茄", "洋蔥", "大蒜", "馬鈴薯", "南瓜", "豆腐", "韭菜", "花菜", "青花菜", "蘑菇", "金針菇", "蘋果", "香蕉", "橙子", "檸檬", "奇異果", "草莓", "葡萄", "桃子", "杏子", "李子", "石榴", "西瓜", "哈密瓜", "蜜瓜", "櫻桃", "藍莓", "柿子", "橄欖", "柚子", "火龍果"];
 $(document).ready((function() {
         initBlog()
     }
 )),
 document.addEventListener("pjax:complete", (function() {
         initBlog();
-        // 解决 katex pjax问题
+        // 解決 katex pjax問題
         if((GLOBAL_CONFIG.htmlType == 'post' || GLOBAL_CONFIG.htmlType == 'page') && typeof window.renderKaTex != 'undefined'){
             window.renderKaTex();
         }
